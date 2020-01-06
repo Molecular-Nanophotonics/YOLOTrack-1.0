@@ -1,0 +1,16 @@
+﻿  dll.cpp
+C:\libtensorflow\include\tensorflow/c/c_api.h(1146): warning C4190: 'TF_NewWhile' has C-linkage specified, but returns UDT 'TF_WhileParams' which is incompatible with C
+  C:\libtensorflow\include\tensorflow/c/c_api.h(1102): note: see declaration of 'TF_WhileParams'
+dll.cpp(92): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+dll.cpp(120): warning C4244: '*=': conversion from 'int64_t' to 'int', possible loss of data
+dll.cpp(132): warning C4244: '*=': conversion from 'int64_t' to 'int', possible loss of data
+dll.cpp(277): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+dll.cpp(319): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+     Creating library C:\Users\mona\Desktop\LabVIEW MNIST V1.1\TensorFlow DLL\x64\Release\TF.lib and object C:\Users\mona\Desktop\LabVIEW MNIST V1.1\TensorFlow DLL\x64\Release\TF.exp
+  Generating code
+  All 218 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  TensorFlow DLL.vcxproj -> C:\Users\mona\Desktop\LabVIEW MNIST V1.1\TensorFlow DLL\x64\Release\TF.dll
+  TensorFlow DLL.vcxproj -> C:\Users\mona\Desktop\LabVIEW MNIST V1.1\TensorFlow DLL\x64\Release\TF.pdb (Full PDB)
