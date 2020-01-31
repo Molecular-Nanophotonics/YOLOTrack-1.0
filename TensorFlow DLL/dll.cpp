@@ -196,12 +196,18 @@ __declspec(dllexport) int decodeYOLO(float obj_threshold, float iou_threshold, i
 	TF_Tensor &out = *output_values[0];
 	float* output_tensor = (float *)TF_TensorData(&out);
 
+	/* 
+	The 416 x 416 image is divided into a 13 x 13 grid (GRID_W, GRID_H). 
+	Each of these grid cells will predict 5 bounding boxes (BOXES). 
+	A bounding box consists of five data items: x, y, width, height, and a confidence score.
+	Each grid cell also predicts which class each bounding box belongs to.
+	*/
 	int _n = 0;
 	for (int row = 0; row < GRID_W; row++) {
 		for (int col = 0; col < GRID_H; col++) {
 			for (int box = 0; box < BOXES; box++) {
 				int obj_idx = entry_index(row, col, box, 4);
-				float objectness = sigmoid(output_tensor[obj_idx]);
+				float objectness = sigmoid(output_tensor[obj_idx]); // The confidence value for the bounding box. Use logistic sigmoid to turn this into a percentage.
 				if (objectness > obj_threshold) {
 					int box_idx = entry_index(row, col, box, 0);
 					float x = output_tensor[box_idx];
@@ -211,6 +217,7 @@ __declspec(dllexport) int decodeYOLO(float obj_threshold, float iou_threshold, i
 					int class_idx = entry_index(row, col, box, 5);
 					int class_max_idx = 0;
 					float class_max = sigmoid(output_tensor[class_idx]);
+					// Find the index of the class with the largest score.
 					for (int c = 1; c < CLASSES; c++) {
 						if (sigmoid(output_tensor[class_idx + c]) > class_max) {
 							class_max = sigmoid(output_tensor[class_idx + c]);
@@ -218,10 +225,20 @@ __declspec(dllexport) int decodeYOLO(float obj_threshold, float iou_threshold, i
 						}
 					}
 					if (_n < N_MAX) {
-						_x[_n] = (row + sigmoid(x)) / GRID_W; // x center, units of image width
-						_y[_n] = (col + sigmoid(y)) / GRID_H; // y center, units of image height
-						_w[_n] = ANCHORS[2 * box] * exp(w) / GRID_W;
-						_h[_n] = ANCHORS[2 * box + 1] * exp(h) / GRID_H;
+						/*
+						The predicted x and y coordinates are relative to the location of the grid cell.
+						We use the logistic sigmoid to constrain these coordinates to the range 0-1.
+						Then we add the cell coordinates and divide by the number of grid cells.
+						Now x and y respresent the center of the bounding box units of the image width and height.
+						*/
+						_x[_n] = (row + sigmoid(x)) / GRID_W; 
+						_y[_n] = (col + sigmoid(y)) / GRID_H; 
+						/*
+						The size of the bounding box w and h, is predicted relative to size of an anchor box. 
+						Here we also transform the width and height into units of the image width and height.
+						*/
+						_w[_n] = exp(w)*ANCHORS[2*box] / GRID_W;
+						_h[_n] = exp(h)*ANCHORS[2*box + 1] / GRID_H;
 						_c[_n] = class_max_idx;
 						_score[_n] = class_max;
 						_n++;
@@ -231,7 +248,10 @@ __declspec(dllexport) int decodeYOLO(float obj_threshold, float iou_threshold, i
 		}
 	}
 	
-	// Supress non-maximum bounding boxes using intersection over union (iou) threshold.
+	/*
+	We already filtered out any bounding boxes that have very low scores, but there still may be boxes that overlap too much with others.
+	We use "Non-Maximum Supression" to remove those duplicate bounding boxes.
+	*/
 	for (int c = 0; c < CLASSES; c++) {
 		int idx_max = 0;
 		for (int i = 0; i < _n; i++) {
