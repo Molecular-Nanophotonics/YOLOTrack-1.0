@@ -1,0 +1,9 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (YOLO.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  dll.cpp
+dll.cpp(173): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+     Creating library C:\Users\mona\Desktop\YOLOv2-Framework\YOLOv2 DLL\x64\Release\YOLOv2.lib and object C:\Users\mona\Desktop\YOLOv2-Framework\YOLOv2 DLL\x64\Release\YOLOv2.exp
+  Generating code
+  All 8 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  YOLOv2 DLL.vcxproj -> C:\Users\mona\Desktop\YOLOv2-Framework\YOLOv2 DLL\x64\Release\YOLOv2.dll
+  YOLOv2 DLL.vcxproj -> C:\Users\mona\Desktop\YOLOv2-Framework\YOLOv2 DLL\x64\Release\YOLOv2.pdb (Full PDB)

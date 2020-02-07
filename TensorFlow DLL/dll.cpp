@@ -1,16 +1,21 @@
+/* Copyright 2020 Martin Fränzl, Molecular Nanophotonics Group. All Rights Reserved.
+
+Licensed under the ... License, Version ...;
+You may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://...
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*/
+
 #include "tensorflow/c/c_api.h"
 
 #include <windows.h>
 #include <vector>
-
-int IMAGE_W = 416;
-int IMAGE_H = 416;
-int GRID_W = 13;
-int GRID_H = 13;
-int BOXES = 5;
-int CLASSES = 3;
-float* ANCHORS;
-int N_MAX;
+//#include <memory> // Required for std::unique_ptr
 
 TF_Status* status;
 TF_Graph* graph;
@@ -32,28 +37,15 @@ int output_size;
 std::vector<TF_Output> outputs;
 std::vector<TF_Tensor*> output_values;
 
-float* _x;
-float* _y;
-float* _w;
-float* _h;
-int* _c;
-float* _score;
-int* idx_list;
-
 extern "C" __declspec(dllexport) int getVersion(char* tf_version);
+extern "C" __declspec(dllexport) int getGPUs(int* gpu_out);
 extern "C" __declspec(dllexport) int setupTF(char* file, int64_t* in_shape, int in_dim, char* in_name, int64_t* out_shape, int out_dim, char* out_name);
 extern "C" __declspec(dllexport) int runTF(float* input_tensor, float* output_tensor);
-extern "C" __declspec(dllexport) int setupDecodeYOLO(int image_w, int image_h, int grid_w, int grid_h, int boxes, int classes, float* anchors, int n);
-extern "C" __declspec(dllexport) int decodeYOLO(float obj_threshold, float nms_threshold, int* n_out, float* x_out, float* y_out, float* w_out, float* h_out, int* c_out);
 
-#define ERROR_READ_PROTOCOL_BUFFER 1001;
+//#define ERROR_READ_PROTOCOL_BUFFER 1001;
 int STATUS = 1;
 
 TF_Buffer* read_file(char* file);
-int test_gpu(TF_Session* session);
-float sigmoid(float x);
-int entry_index(int row, int col, int box, int entry);
-float box_iou(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
 
 void free_buffer(void* data, size_t length) {}
 static void Deallocator(void* data, size_t length, void* arg) {}
@@ -80,7 +72,6 @@ BOOL WINAPI DllMain(
 		TF_DeleteImportGraphDefOptions(graph_opts);
 		TF_DeleteGraph(graph);
 		TF_DeleteStatus(status);
-
 		break;
 	}
 	return TRUE;
@@ -90,6 +81,42 @@ BOOL WINAPI DllMain(
 __declspec(dllexport) int getVersion(char* tf_version)
 {
 	sprintf(tf_version, TF_Version());
+	return 0;
+}
+
+__declspec(dllexport) int getGPUs(int* gpu_out) // ../tensorflow/c/c_api_test.cc
+{
+	//std::unique_ptr<TF_Status, decltype(&TF_DeleteStatus)> _status(TF_NewStatus(), TF_DeleteStatus);
+	//TF_Status* status = _status.get();
+	TF_Status* status = TF_NewStatus();
+
+	//std::unique_ptr<TF_Graph, decltype(&TF_DeleteGraph)> _graph(TF_NewGraph(), TF_DeleteGraph);
+	//TF_Graph* graph = _graph.get();
+	TF_Graph* graph = TF_NewGraph();
+
+	TF_SessionOptions* session_options = TF_NewSessionOptions();
+	TF_Session* session = TF_NewSession(graph, session_options, status);
+	TF_DeleteSessionOptions(session_options);
+
+	//std::unique_ptr<TF_DeviceList, decltype(&TF_DeleteDeviceList)> _device_list(TF_SessionListDevices(session, status), TF_DeleteDeviceList);
+	//TF_DeviceList* device_list = _device_list.get();
+	TF_DeviceList* device_list = TF_SessionListDevices(session, status);
+
+	const int num_devices = TF_DeviceListCount(device_list);
+	int gpu = 0;
+	for (int i = 0; i < num_devices; ++i) {
+		const char* device_name = TF_DeviceListName(device_list, i, status);
+		const char* device_type = TF_DeviceListType(device_list, i, status);
+		if (std::string(device_type) == "GPU") {
+			gpu++; // GPU device found.
+		}
+	}
+	TF_DeleteSession(session, status);
+	TF_DeleteGraph(graph);
+	TF_DeleteDeviceList(device_list);
+	TF_DeleteStatus(status);
+
+	*gpu_out = gpu;
 	return 0;
 }
 
@@ -132,14 +159,6 @@ __declspec(dllexport) int setupTF(char* file, int64_t* in_shape, int in_dim, cha
 	
 	outputs.push_back({ TF_GraphOperationByName(graph, out_name), 0 });
 	output_values.push_back(TF_AllocateTensor(TF_FLOAT, output_shape, output_dim, output_size * sizeof(float)));	
-
-	if (test_gpu(session)) {
-		return 1; // GPU device found.
-	}
-	else {
-		return 0; // No GPU device found.
-	}
-	
 }
 
 
@@ -163,169 +182,6 @@ __declspec(dllexport) int runTF(float* input_tensor, float* output_tensor)
 	}
 	
 	return 0;
-}
-
-
-__declspec(dllexport) int setupDecodeYOLO(int image_w, int image_h, int grid_h, int grid_w, int boxes, int classes, float* anchors, int n_max)
-{
-	IMAGE_W = image_w;
-	IMAGE_H = image_h;
-	GRID_W = grid_w;
-	GRID_H = grid_h;
-	BOXES = boxes;
-	CLASSES = classes;
-	ANCHORS = (float*)calloc(2*BOXES, sizeof(float));
-	ANCHORS = anchors;
-	N_MAX = n_max;
-
-	_x = (float*)calloc(N_MAX, sizeof(float));
-	_y = (float*)calloc(N_MAX, sizeof(float));
-	_w = (float*)calloc(N_MAX, sizeof(float));
-	_h = (float*)calloc(N_MAX, sizeof(float));
-	_c = (int*)calloc(N_MAX, sizeof(int));
-	_score = (float*)calloc(N_MAX, sizeof(float));
-	idx_list = (int*)calloc(N_MAX, sizeof(int));
-	
-	return 0;
-
-}
-
-// Decode the YOLO output tensor. See the YOLO papers for details.
-__declspec(dllexport) int decodeYOLO(float obj_threshold, float iou_threshold, int* n_out, float *x_out, float *y_out, float *w_out, float *h_out, int* c_out)
-{
-	TF_Tensor &out = *output_values[0];
-	float* output_tensor = (float *)TF_TensorData(&out);
-
-	/* 
-	The 416 x 416 image is divided into a 13 x 13 grid (GRID_W, GRID_H). 
-	Each of these grid cells will predict 5 bounding boxes (BOXES). 
-	A bounding box consists of five data items: x, y, width, height, and a confidence score.
-	Each grid cell also predicts which class each bounding box belongs to.
-	*/
-	int _n = 0;
-	for (int row = 0; row < GRID_W; row++) {
-		for (int col = 0; col < GRID_H; col++) {
-			for (int box = 0; box < BOXES; box++) {
-				int obj_idx = entry_index(row, col, box, 4);
-				float objectness = sigmoid(output_tensor[obj_idx]); // The confidence value for the bounding box. Use logistic sigmoid to turn this into a percentage.
-				if (objectness > obj_threshold) {
-					int box_idx = entry_index(row, col, box, 0);
-					float x = output_tensor[box_idx];
-					float y = output_tensor[box_idx + 1];
-					float w = output_tensor[box_idx + 2];
-					float h = output_tensor[box_idx + 3];
-					int class_idx = entry_index(row, col, box, 5);
-					int class_max_idx = 0;
-					float class_max = sigmoid(output_tensor[class_idx]);
-					// Find the index of the class with the largest score.
-					for (int c = 1; c < CLASSES; c++) {
-						if (sigmoid(output_tensor[class_idx + c]) > class_max) {
-							class_max = sigmoid(output_tensor[class_idx + c]);
-							class_max_idx = c;
-						}
-					}
-					if (_n < N_MAX) {
-						/*
-						The predicted x and y coordinates are relative to the location of the grid cell.
-						We use the logistic sigmoid to constrain these coordinates to the range 0-1.
-						Then we add the cell coordinates and divide by the number of grid cells.
-						Now x and y respresent the center of the bounding box units of the image width and height.
-						*/
-						_x[_n] = (row + sigmoid(x)) / GRID_W; 
-						_y[_n] = (col + sigmoid(y)) / GRID_H; 
-						/*
-						The size of the bounding box w and h, is predicted relative to size of an anchor box. 
-						Here we also transform the width and height into units of the image width and height.
-						*/
-						_w[_n] = exp(w)*ANCHORS[2*box] / GRID_W;
-						_h[_n] = exp(h)*ANCHORS[2*box + 1] / GRID_H;
-						_c[_n] = class_max_idx;
-						_score[_n] = class_max;
-						_n++;
-					}
-				}
-			}
-		}
-	}
-	
-	/*
-	We already filtered out any bounding boxes that have very low scores, but there still may be boxes that overlap too much with others.
-	We use "Non-Maximum Supression" to remove those duplicate bounding boxes.
-	*/
-	for (int c = 0; c < CLASSES; c++) {
-		int idx_max = 0;
-		for (int i = 0; i < _n; i++) {
-			if (_c[i] == c) {
-				idx_list[idx_max] = i;
-				idx_max++;
-			}
-		}
-		for (int i = 0; i < idx_max; i++) {
-			int idx_i = idx_list[i];
-			for (int j = i + 1; j < idx_max; j++) {
-				int idx_j = idx_list[j];
-				if (box_iou(_x[idx_i], _y[idx_i], _w[idx_i], _h[idx_i], _x[idx_j], _y[idx_j], _w[idx_j], _h[idx_j]) > iou_threshold) {
-					_score[idx_j] = 0;
-				}
-			}
-		}
-	}
-
-	// Copy to output. 
-	int n = 0;
-	for (int i = 0; i < _n; i++) {
-		if (_score[i] > 0) {
-			x_out[n] = _x[i];
-			y_out[n] = _y[i];
-			w_out[n] = _w[i];
-			h_out[n] = _h[i];
-			c_out[n] = _c[i];
-			n++;
-		}
-	}
-	*n_out = n;
-
-	return 0;
-}
-
-
-float sigmoid(float x)
-{
-	return 1. / (1. + exp((float)-x));
-}
-
-
-int entry_index(int row, int col, int box, int entry) 
-{
-	return entry + (4 + 1 + CLASSES)*(box + BOXES * (row + GRID_H*col));
-}
-
-
-float interval_intersec(float x1, float x2, float  x3, float  x4)
-{
-	if (x3 < x1) {
-		if (x4 < x1)
-			return 0;
-		else
-			return min(x2, x4) - x1;
-	}
-	else {
-		if (x2 < x3)
-			return 0;
-		else
-			return min(x2, x4) - x3;
-	}
-}
-
-
-float box_iou(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2)
-{
-	float w = interval_intersec(x1 - w1/2, x1 + w1/2, x2 - w2/2, x2 + w2/2);
-	float h = interval_intersec(y1 - h1/2, y1 + h1/2, y2 - h2/2, y2 + h2/2);
-	float area_intersec = w * h;
-	float area_union = w1*h1 + w2*h2 - area_intersec;
-
-	return area_intersec / area_union;
 }
 
 
@@ -353,23 +209,6 @@ TF_Buffer* read_file(char* filename)
 	return buf;
 }
 
-
-int test_gpu(TF_Session* session) {
-
-	TF_Status* status = TF_NewStatus();
-	TF_DeviceList* device_list = TF_SessionListDevices(session, status);
-
-	const int num_devices = TF_DeviceListCount(device_list);
-	for (int i = 0; i < num_devices; ++i) {
-		const char* device_name = TF_DeviceListName(device_list, i, status);
-		const char* device_type = TF_DeviceListType(device_list, i, status);
-		if (std::string(device_type) == "GPU") {
-			return 1; // GPU device found.
-		}
-	}
-	// No GPU device found.
-	return 0;
-}
 
 // For debuging.
 /*
