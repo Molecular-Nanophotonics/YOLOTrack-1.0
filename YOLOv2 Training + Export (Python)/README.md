@@ -1,4 +1,4 @@
-# Training in Python Keras with TensorFlow Backend
+# Training in Python Keras
 
 The workflow is as follows:
 1. Generate images for training and validation using the **Image_Generator.ipynb** notebook. By default these images are generated in the *images* folder.
