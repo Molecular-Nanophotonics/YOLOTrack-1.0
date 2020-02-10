@@ -4,7 +4,7 @@
 
 ## Introduction 
 
-This is a framework for the real-time localization and classification of objects in optical microscopy images using a single-shot covolutional neural network. We adapted the YOLOv2 architecture ("You Only Look Once") enabling to localize and classify objects at very low signal-to-noise ratios at 50 fps for images as large as 416 x 416 px.
+This is a framework for the real-time localization and classification of objects in optical microscopy images using a single-shot covolutional neural network YOLO ("You Only Look Once") . We adapted the YOLOv2 architecture enabling to localize and classify objects at very low signal-to-noise ratios at 50 fps for images as large as 416 x 416 px.
 
 The network is implemented in Python/Keras using the TensorFlow backend. For real-time inference the trained model is exported to a custom, C based dynamic link library (DLL). The DLL is based on the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) providing the fasted possible image processing and integrability in other programming languages such as LabVIEW, MATLAB and C++.
 
