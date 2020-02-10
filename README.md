@@ -12,7 +12,7 @@ Here, we provide examples for the training in Python/Keras and for the model inf
 
 ## Framework  Design
 
-<img src="Resources/Software-Design.png" width=300>
+<img src="Resources/Software-Design.png" width=512 align="center">
 
 ## Training in Python/Keras
 
