@@ -16,7 +16,7 @@ Here, we provide examples for the training in Python/Keras and for the model inf
 
 ## Training in Python/Keras
 
-To generate synthetic images for training and validation the [Image_Generator.ipynb]("YOLOv2 Training (Python)/Image_Generator.ipynb") notebook can be used. By default these images are generated in the *images* folder. To train the model open the **Training+Export.ipynb** notebook to train the network. The notebook will export three files: `model_weights.h5`, `model.pb` and `model.ini`. 
+To generate synthetic images for training and validation the [Image_Generator.ipynb](YOLOv2 Training/Image_Generator.ipynb) notebook can be used. By default these images are generated in the *images* folder. To train the model open the **Training+Export.ipynb** notebook to train the network. The notebook will export three files: `model_weights.h5`, `model.pb` and `model.ini`. 
 
 The `model.pb` contains the graph stored as protocol buffer file format. The `model.ini` contains parameters required for decoding the output tensor, e.g., the number of grid cells, boxes etc. The `model.pb` and `model.ini` are required for deploying the model to LabVIEW, C++, ... 
 
