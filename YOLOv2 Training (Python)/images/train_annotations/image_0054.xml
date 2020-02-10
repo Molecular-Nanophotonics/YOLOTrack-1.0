@@ -1,0 +1,63 @@
+<annotation>
+    <folder>train_images</folder>
+    <filename>image_0054.jpg</filename>
+    <path>C:\Users\mona\Desktop\YOLOv2-Framework\YOLOv2 Training + Export (Python)\images\train_images\image_0054.jpg</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>416</width>
+        <height>416</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>118.7587993162703</xmin>
+            <ymin>93.36177836965463</ymin>
+            <xmax>134.7587993162703</xmax>
+            <ymax>109.36177836965463</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>54.20229587901092</xmin>
+            <ymin>39.93330206539696</ymin>
+            <xmax>70.20229587901092</xmax>
+            <ymax>55.93330206539696</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>315.66405188805936</xmin>
+            <ymin>51.79939471075819</ymin>
+            <xmax>339.66405188805936</xmax>
+            <ymax>75.7993947107582</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>140.76910840546347</xmin>
+            <ymin>286.50129941012756</ymin>
+            <xmax>164.76910840546347</xmax>
+            <ymax>310.50129941012756</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>176.30877452138836</xmin>
+            <ymin>100.36973090334244</ymin>
+            <xmax>200.30877452138836</xmax>
+            <ymax>124.36973090334244</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>174.51221605684665</xmin>
+            <ymin>230.66260853129108</ymin>
+            <xmax>198.51221605684665</xmax>
+            <ymax>254.66260853129108</ymax>
+        </bndbox>
+    </object>
+</annotation>

@@ -1,0 +1,63 @@
+<annotation>
+    <folder>train_images</folder>
+    <filename>image_0303.jpg</filename>
+    <path>C:\Users\mona\Desktop\YOLOv2-Framework\YOLOv2 Training + Export (Python)\images\train_images\image_0303.jpg</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>416</width>
+        <height>416</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>54.4890099482783</xmin>
+            <ymin>239.4513073858372</ymin>
+            <xmax>70.4890099482783</xmax>
+            <ymax>255.4513073858372</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>244.83510843347972</xmin>
+            <ymin>85.2630941757225</ymin>
+            <xmax>260.8351084334797</xmax>
+            <ymax>101.2630941757225</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>238.50851981191374</xmin>
+            <ymin>156.3857765603069</ymin>
+            <xmax>254.50851981191374</xmax>
+            <ymax>172.3857765603069</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>217.26633812739905</xmin>
+            <ymin>337.02728968945627</ymin>
+            <xmax>233.26633812739905</xmax>
+            <ymax>353.02728968945627</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>63.85601353326399</xmin>
+            <ymin>168.27993081839503</ymin>
+            <xmax>79.85601353326399</xmax>
+            <ymax>184.27993081839503</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>186.44266074279554</xmin>
+            <ymin>311.21425016890475</ymin>
+            <xmax>210.44266074279554</xmax>
+            <ymax>335.21425016890475</ymax>
+        </bndbox>
+    </object>
+</annotation>

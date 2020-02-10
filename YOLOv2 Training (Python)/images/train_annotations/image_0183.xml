@@ -1,0 +1,47 @@
+<annotation>
+    <folder>train_images</folder>
+    <filename>image_0183.jpg</filename>
+    <path>C:\Users\mona\Desktop\YOLOv2-Framework\YOLOv2 Training + Export (Python)\images\train_images\image_0183.jpg</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>416</width>
+        <height>416</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>212.16377411344078</xmin>
+            <ymin>154.2982676934495</ymin>
+            <xmax>228.16377411344078</xmax>
+            <ymax>170.2982676934495</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>335.5720499103317</xmin>
+            <ymin>118.98297087066459</ymin>
+            <xmax>359.5720499103317</xmax>
+            <ymax>142.9829708706646</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>117.621443496773</xmin>
+            <ymin>361.96116656373295</ymin>
+            <xmax>141.621443496773</xmax>
+            <ymax>385.96116656373295</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>157.7319704380748</xmin>
+            <ymin>200.98473859273165</ymin>
+            <xmax>181.7319704380748</xmax>
+            <ymax>224.98473859273165</ymax>
+        </bndbox>
+    </object>
+</annotation>

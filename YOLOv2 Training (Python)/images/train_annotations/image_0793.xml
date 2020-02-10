@@ -1,0 +1,119 @@
+<annotation>
+    <folder>train_images</folder>
+    <filename>image_0793.jpg</filename>
+    <path>C:\Users\mona\Desktop\YOLOv2-Framework\YOLOv2 Training + Export (Python)\images\train_images\image_0793.jpg</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>416</width>
+        <height>416</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>243.5055786295802</xmin>
+            <ymin>64.13515178429671</ymin>
+            <xmax>259.5055786295802</xmax>
+            <ymax>80.13515178429671</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>292.87851527491915</xmin>
+            <ymin>270.88389532575695</ymin>
+            <xmax>308.87851527491915</xmax>
+            <ymax>286.88389532575695</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>88.19953927345718</xmin>
+            <ymin>375.01954168447946</ymin>
+            <xmax>104.19953927345718</xmax>
+            <ymax>391.01954168447946</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>215.1742998692699</xmin>
+            <ymin>87.51986822177722</ymin>
+            <xmax>231.1742998692699</xmax>
+            <ymax>103.51986822177722</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>228.67434601353906</xmin>
+            <ymin>298.66549288735894</ymin>
+            <xmax>244.67434601353906</xmax>
+            <ymax>314.66549288735894</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>369.8859357678391</xmin>
+            <ymin>203.65085399219393</ymin>
+            <xmax>385.8859357678391</xmax>
+            <ymax>219.65085399219393</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>161.3891310601857</xmin>
+            <ymin>304.6293479416095</ymin>
+            <xmax>177.3891310601857</xmax>
+            <ymax>320.6293479416095</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>289.957952106681</xmin>
+            <ymin>250.37208166172763</ymin>
+            <xmax>305.957952106681</xmax>
+            <ymax>266.37208166172763</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>191.6661609239753</xmin>
+            <ymin>218.16989029313297</ymin>
+            <xmax>207.6661609239753</xmax>
+            <ymax>234.16989029313297</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>131.40948423572237</xmin>
+            <ymin>71.28331495354969</ymin>
+            <xmax>147.40948423572237</xmax>
+            <ymax>87.28331495354969</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>267.4328192817047</xmin>
+            <ymin>154.19589072523874</ymin>
+            <xmax>291.4328192817047</xmax>
+            <ymax>178.19589072523874</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>330.32278642967174</xmin>
+            <ymin>199.1216797709399</ymin>
+            <xmax>354.32278642967174</xmax>
+            <ymax>223.1216797709399</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>373.0971427386574</xmin>
+            <ymin>89.33033745371345</ymin>
+            <xmax>397.0971427386574</xmax>
+            <ymax>113.33033745371345</ymax>
+        </bndbox>
+    </object>
+</annotation>

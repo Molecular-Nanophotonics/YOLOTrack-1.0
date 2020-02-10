@@ -1,0 +1,63 @@
+<annotation>
+    <folder>valid_images</folder>
+    <filename>image_0061.jpg</filename>
+    <path>C:\Users\mona\Desktop\YOLOv2-Framework\YOLOv2 Training + Export (Python)\images\valid_images\image_0061.jpg</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>416</width>
+        <height>416</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>Spot</name>
+        <bndbox>
+            <xmin>380.5736887949654</xmin>
+            <ymin>218.3692245199379</ymin>
+            <xmax>396.5736887949654</xmax>
+            <ymax>234.3692245199379</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>297.74337195265906</xmin>
+            <ymin>375.00523870162004</ymin>
+            <xmax>321.74337195265906</xmax>
+            <ymax>399.00523870162004</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>89.54234271270904</xmin>
+            <ymin>19.886864028725793</ymin>
+            <xmax>113.54234271270904</xmax>
+            <ymax>43.886864028725796</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>10.57848251069732</xmin>
+            <ymin>229.3672078535032</ymin>
+            <xmax>34.57848251069732</xmax>
+            <ymax>253.3672078535032</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>149.6932977071851</xmin>
+            <ymin>226.40448547542326</ymin>
+            <xmax>173.6932977071851</xmax>
+            <ymax>250.40448547542326</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>Ring</name>
+        <bndbox>
+            <xmin>133.76609019667285</xmin>
+            <ymin>35.78632700634634</ymin>
+            <xmax>157.76609019667285</xmax>
+            <ymax>59.78632700634634</ymax>
+        </bndbox>
+    </object>
+</annotation>
