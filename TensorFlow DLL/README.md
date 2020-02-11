@@ -13,19 +13,16 @@ tf_version (char*): Pointer to a array of characters allocated by the user
 int: 1  No Error. <br>
      0  Error.
 
+**int getVersion(char* tf_version)**
+``
+Description:    This function returns the TensorFlow version. 
 
-```c
-int getVersion(char* tf_version);
-    /* 
-    Description:    This function returns the TensorFlow version. 
+Parameters:     tf_version (char*): Pointer to a array of characters allocated by the user.
 
-    Parameters:     tf_version (char*): Pointer to a array of characters allocated by the user.
-
-    Return:         int: 
-                    1  No Error. 
-                    0  Error.
-    */
-```
+Return:         int: 
+                1  No Error. 
+                0  Error.
+``
 
 ```c
 int getGPUs(int* num_gpus);
