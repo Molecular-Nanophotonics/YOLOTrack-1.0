@@ -17,6 +17,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #include <vector>
 //#include <memory> // Required for std::unique_ptr
 
+# include "TF.h"
+
 TF_Status* status;
 TF_Graph* graph;
 TF_Buffer* graph_def;
@@ -37,11 +39,6 @@ int output_size;
 std::vector<TF_Output> outputs;
 std::vector<TF_Tensor*> output_values;
 
-extern "C" __declspec(dllexport) int getVersion(char* tf_version);
-extern "C" __declspec(dllexport) int getGPUs(int* gpu_out);
-extern "C" __declspec(dllexport) int setupTF(char* file, int64_t* in_shape, int in_dim, char* in_name, int64_t* out_shape, int out_dim, char* out_name);
-extern "C" __declspec(dllexport) int runTF(float* input_tensor, float* output_tensor);
-
 //#define ERROR_READ_PROTOCOL_BUFFER 1001;
 int STATUS = 1;
 
@@ -49,7 +46,6 @@ TF_Buffer* read_file(char* file);
 
 void free_buffer(void* data, size_t length) {}
 static void Deallocator(void* data, size_t length, void* arg) {}
-
 
 BOOL WINAPI DllMain(
 	HINSTANCE hinstDLL, // Handle to DLL module.

@@ -151,6 +151,9 @@
   <ItemGroup>
     <ClCompile Include="dll.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TF.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

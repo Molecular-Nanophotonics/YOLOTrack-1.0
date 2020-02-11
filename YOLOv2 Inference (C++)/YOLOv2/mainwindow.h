@@ -3,19 +3,35 @@
 
 #include <QMainWindow>
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
+#include "../../TensorFlow DLL/TF.h"
+
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QImage>
+#include <QImageReader>
+#include <QPainter>
+
+namespace Ui {
+class MainWindow;
+}
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void open();
+
 
 private:
     Ui::MainWindow *ui;
+
+    bool loadFile(const QString &);
+    void setImage(const QImage &newImage);
 };
+
 #endif // MAINWINDOW_H
