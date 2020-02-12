@@ -3,7 +3,7 @@
 ```c
 int getVersion(char* tf_version)
 /*
-    Description:    This function returns the TensorFlow version. 
+    Description:    This function returns the installed TensorFlow version. 
 
     Parameters:     tf_version (char*): Pointer to a character arry to store the TensorFlow version allocated by the user.
 
@@ -31,7 +31,7 @@ int setupTF(char* file, int64_t* in_shape, int in_dim, char* in_name, int64_t* o
 /*
     Description:    This function sets up the TensorFlow session, e.g., load the model graph and allocate the required memory. 
 
-    Parameters:     file (char*): Path to the model graph saved as protocol buffer file
+    Parameters:     file (char*): Path to the model graph (*.pb).
                     in_shape (int64_t*): Shape of the input tensor.
                     in_dim (int): Dimension of the input tensor.
                     in_name (char*): Name of the input node.
