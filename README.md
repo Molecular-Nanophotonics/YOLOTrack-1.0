@@ -2,17 +2,20 @@
 
 *Martin Fränzl*, Molecular Nanophotonics Group
 
+## C
 ## Introduction 
 
 This is a framework for the real-time localization and classification of objects in optical microscopy images using a single-shot covolutional neural network YOLO ("You Only Look Once") . We adapted the YOLOv2 architecture enabling to localize and classify objects at very low signal-to-noise ratios at 50 fps for images as large as 416 x 416 px.
 
-The network is implemented in Python/Keras using the TensorFlow backend. For real-time inference the trained model is exported to a custom, C based dynamic link library (DLL). The DLL is based on the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) providing the fastest possible image processing and is readily integrable in other programming languages such as LabVIEW, MATLAB and C++.
+The network is implemented in Python/Keras using the TensorFlow backend. For real-time inference the trained model is exported to a custom, C based dynamic link library (TF.dll). The DLL is based on the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) providing the fastest possible image processing and is readily integrable in other programming languages such as LabVIEW and C++.
 
 Here, we provide examples for the training in Python/Keras and for the model inference in LabVIEW and C++.
 
 ## Framework  Design
 
 <p align="center"><img src="Resources/Software-Design.png" width=512></p>
+
+The `TF.dll` is a library for TensorFlow model inference that can be used with any TensorFlow model. It is a copy of [TF DLL](https://github.com/Molecular-Nanophotonics/TensorFlow-Framework/TF DLL) part of the [TensorFlow-Framework](https://github.com/Molecular-Nanophotonics/TensorFlow-Framework). The `YOLOv2.dll` adds specific functions required for YOLO, e.g, the decoding of the output tensor.
 
 ## Training in Python/Keras
 
