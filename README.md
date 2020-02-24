@@ -17,7 +17,7 @@ Here, we provide examples for the training in Python/Keras and for the model inf
 
 ## Repository Contents
 
-- [YOLOv2 Training (Python/Keras)](./YOLOv2%20Training%20(Python/Keras)): Jupyter Notebooks for training and exporting a YOLOv2 model with Python/Keras using the TensorFlow backend
+- [YOLOv2 Training (Python/Keras)](./YOLOv2%20Training%20(Python/Keras)): Jupyter Notebooks for training and exporting YOLOv2 models with Python/Keras using the TensorFlow backend
 - [TF DLL](./TF%20DLL): DLL for running TensorFlow models on GPU (TF.dll)
 - [YOLOv2 DLL](./YOLOv2%20DLL): DLL for decoding the YOLOv2 output tensor (YOLOv2.dll)
 - [YOLOv2 Inference (LabVIEW)](./YOLOv2%20Inference%20(LabVIEW)): Example for importing and running a trained YOLOv2 model in C++ 
