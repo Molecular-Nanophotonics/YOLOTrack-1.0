@@ -176,10 +176,7 @@ __declspec(dllexport) int runTF(float* input_tensor, float* output_tensor)
 	input_values.push_back(TF_NewTensor(TF_FLOAT, input_shape, input_dim, input_tensor, input_size * sizeof(float), &Deallocator, 0));
 	
 	// Run the session.
-	TF_SessionRun(session, nullptr,
-		&inputs[0], &input_values[0], 1,
-		&outputs[0], &output_values[0], 1,
-		nullptr, 0, nullptr, status);
+	TF_SessionRun(session, nullptr, &inputs[0], &input_values[0], 1, &outputs[0], &output_values[0], 1,	nullptr, 0, nullptr, status);
 
 	TF_Tensor &out = *output_values[0];
 	float* output = (float *)TF_TensorData(&out);

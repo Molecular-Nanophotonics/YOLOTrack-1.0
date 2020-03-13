@@ -31,7 +31,7 @@ FORMS += \
 
 #LIBS += $$PWD/MyDLL/x64/Release/MyDLL.dll
 
-win32:CONFIG(release, debug|release): LIBS += "-L../../TensorFlow DLL/x64/release/" -lTF
+win32:CONFIG(release, debug|release): LIBS += "-L../../TF DLL/x64/release/" -lTF
 
-INCLUDEPATH += ../../TensorFlow DLL/TF.h
-DEPENDPATH += ../../TensorFlow DLL/TF.h
+INCLUDEPATH += ../../TF DLL/TF.h
+DEPENDPATH += ../../TF DLL/TF.h

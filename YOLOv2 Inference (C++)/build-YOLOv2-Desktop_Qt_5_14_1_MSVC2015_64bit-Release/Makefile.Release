@@ -16,10 +16,10 @@ CXX           = cl
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DNDEBUG -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -nologo -Zc:wchar_t -FS -Zc:strictStrings -O2 -MD -W3 -w44456 -w44457 -w44458 $(DEFINES)
 CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -EHsc $(DEFINES)
-INCPATH       = -I..\YOLOv2 -I. -I../../TensorFlow -IDLL/TF.h -IC:\Qt\5.14.1\msvc2015_64\include -IC:\Qt\5.14.1\msvc2015_64\include\QtWidgets -IC:\Qt\5.14.1\msvc2015_64\include\QtGui -IC:\Qt\5.14.1\msvc2015_64\include\QtANGLE -IC:\Qt\5.14.1\msvc2015_64\include\QtCore -Irelease -I. -I/include -IC:\Qt\5.14.1\msvc2015_64\mkspecs\win32-msvc 
+INCPATH       = -I..\YOLOv2 -I. -I../../TF -IDLL/TF.h -IC:\Qt\5.14.1\msvc2015_64\include -IC:\Qt\5.14.1\msvc2015_64\include\QtWidgets -IC:\Qt\5.14.1\msvc2015_64\include\QtGui -IC:\Qt\5.14.1\msvc2015_64\include\QtANGLE -IC:\Qt\5.14.1\msvc2015_64\include\QtCore -Irelease -I. -I/include -IC:\Qt\5.14.1\msvc2015_64\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /OPT:REF /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:"..\..\TensorFlow DLL\x64\release" "..\..\TensorFlow DLL\x64\release\TF.lib" C:\Qt\5.14.1\msvc2015_64\lib\Qt5Widgets.lib C:\Qt\5.14.1\msvc2015_64\lib\Qt5Gui.lib C:\Qt\5.14.1\msvc2015_64\lib\Qt5Core.lib  C:\Qt\5.14.1\msvc2015_64\lib\qtmain.lib /LIBPATH:C:\openssl\lib /LIBPATH:C:\Utils\my_sql\mysql-5.7.25-winx64\lib /LIBPATH:C:\Utils\postgresql\pgsql\lib shell32.lib 
+LIBS          = /LIBPATH:"..\..\TF DLL\x64\release" "..\..\TF DLL\x64\release\TF.lib" C:\Qt\5.14.1\msvc2015_64\lib\Qt5Widgets.lib C:\Qt\5.14.1\msvc2015_64\lib\Qt5Gui.lib C:\Qt\5.14.1\msvc2015_64\lib\Qt5Core.lib  C:\Qt\5.14.1\msvc2015_64\lib\qtmain.lib /LIBPATH:C:\openssl\lib /LIBPATH:C:\Utils\my_sql\mysql-5.7.25-winx64\lib /LIBPATH:C:\Utils\postgresql\pgsql\lib shell32.lib 
 QMAKE         = C:\Qt\5.14.1\msvc2015_64\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -288,7 +288,7 @@ release\moc_mainwindow.cpp: ..\YOLOv2\mainwindow.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtGui\qtouchdevice.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtGui\qicon.h \
-		"..\..\TensorFlow DLL\TF.h" \
+		"..\..\TF DLL\TF.h" \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\QFileDialog \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qfiledialog.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtCore\qdir.h \
@@ -313,7 +313,7 @@ release\moc_mainwindow.cpp: ..\YOLOv2\mainwindow.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtGui\qpen.h \
 		release\moc_predefs.h \
 		C:\Qt\5.14.1\msvc2015_64\bin\moc.exe
-	C:\Qt\5.14.1\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/mona/Desktop/YOLOv2-Framework/YOLOv2 Inference (C++)/build-YOLOv2-Desktop_Qt_5_14_1_MSVC2015_64bit-Release/release/moc_predefs.h" -IC:/Qt/5.14.1/msvc2015_64/mkspecs/win32-msvc -I"C:/Users/mona/Desktop/YOLOv2-Framework/YOLOv2 Inference (C++)/YOLOv2" -IC:/Users/mona/Desktop/YOLOv2-Framework/TensorFlow -I"C:/Users/mona/Desktop/YOLOv2-Framework/YOLOv2 Inference (C++)/YOLOv2/DLL/TF.h" -IC:/Qt/5.14.1/msvc2015_64/include -IC:/Qt/5.14.1/msvc2015_64/include/QtWidgets -IC:/Qt/5.14.1/msvc2015_64/include/QtGui -IC:/Qt/5.14.1/msvc2015_64/include/QtANGLE -IC:/Qt/5.14.1/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\winrt" ..\YOLOv2\mainwindow.h -o release\moc_mainwindow.cpp
+	C:\Qt\5.14.1\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/mona/Desktop/YOLOv2-Framework/YOLOv2 Inference (C++)/build-YOLOv2-Desktop_Qt_5_14_1_MSVC2015_64bit-Release/release/moc_predefs.h" -IC:/Qt/5.14.1/msvc2015_64/mkspecs/win32-msvc -I"C:/Users/mona/Desktop/YOLOv2-Framework/YOLOv2 Inference (C++)/YOLOv2" -IC:/Users/mona/Desktop/YOLOv2-Framework/TF -I"C:/Users/mona/Desktop/YOLOv2-Framework/YOLOv2 Inference (C++)/YOLOv2/DLL/TF.h" -IC:/Qt/5.14.1/msvc2015_64/include -IC:/Qt/5.14.1/msvc2015_64/include/QtWidgets -IC:/Qt/5.14.1/msvc2015_64/include/QtGui -IC:/Qt/5.14.1/msvc2015_64/include/QtANGLE -IC:/Qt/5.14.1/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\winrt" ..\YOLOv2\mainwindow.h -o release\moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -446,7 +446,7 @@ release\main.obj: ..\YOLOv2\main.cpp ..\YOLOv2\mainwindow.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtGui\qtouchdevice.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtGui\qicon.h \
-		"..\..\TensorFlow DLL\TF.h" \
+		"..\..\TF DLL\TF.h" \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\QFileDialog \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qfiledialog.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtCore\qdir.h \
@@ -583,7 +583,7 @@ release\mainwindow.obj: ..\YOLOv2\mainwindow.cpp ..\YOLOv2\mainwindow.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtGui\qtouchdevice.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtGui\qicon.h \
-		"..\..\TensorFlow DLL\TF.h" \
+		"..\..\TF DLL\TF.h" \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\QFileDialog \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qfiledialog.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtCore\qdir.h \
@@ -613,13 +613,26 @@ release\mainwindow.obj: ..\YOLOv2\mainwindow.cpp ..\YOLOv2\mainwindow.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtGui\qguiapplication.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtGui\qinputmethod.h \
+		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\QDoubleSpinBox \
+		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qspinbox.h \
+		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt\5.14.1\msvc2015_64\include\QtGui\qvalidator.h \
+		C:\Qt\5.14.1\msvc2015_64\include\QtCore\qregularexpression.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\QLabel \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qlabel.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\QLineEdit \
+		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qlineedit.h \
+		C:\Qt\5.14.1\msvc2015_64\include\QtGui\qtextcursor.h \
+		C:\Qt\5.14.1\msvc2015_64\include\QtGui\qtextformat.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\QPushButton \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qpushbutton.h \
 		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\QWidget
+		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\QSlider \
+		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qslider.h \
+		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\qabstractslider.h \
+		C:\Qt\5.14.1\msvc2015_64\include\QtWidgets\QWidget \
+		C:\Qt\5.14.1\msvc2015_64\include\QtCore\QDebug
 
 release\moc_mainwindow.obj: release\moc_mainwindow.cpp 
 

@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 
-#include "../../TensorFlow DLL/TF.h"
+#include "../../TF DLL/TF.h"
 
 #include <QFileDialog>
 #include <QMessageBox>
@@ -24,7 +24,8 @@ public:
     ~MainWindow();
 
 private slots:
-    void open();
+    void selectModelDialog();
+    void selectImageDialog();
 
 
 private:
