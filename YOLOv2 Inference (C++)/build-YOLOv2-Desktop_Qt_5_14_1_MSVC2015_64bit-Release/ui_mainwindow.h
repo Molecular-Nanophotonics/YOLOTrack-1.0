@@ -17,6 +17,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -43,6 +44,8 @@ public:
     QLabel *labelObjectThreshold;
     QLabel *NMSThreshold_l;
     QPushButton *update_button;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -53,7 +56,7 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         imageLabel = new QLabel(centralWidget);
         imageLabel->setObjectName(QString::fromUtf8("imageLabel"));
-        imageLabel->setGeometry(QRect(10, 270, 511, 511));
+        imageLabel->setGeometry(QRect(10, 650, 511, 131));
         selectImage_button = new QPushButton(centralWidget);
         selectImage_button->setObjectName(QString::fromUtf8("selectImage_button"));
         selectImage_button->setGeometry(QRect(490, 140, 31, 23));
@@ -115,6 +118,14 @@ public:
         update_button = new QPushButton(centralWidget);
         update_button->setObjectName(QString::fromUtf8("update_button"));
         update_button->setGeometry(QRect(10, 200, 75, 31));
+        verticalLayoutWidget = new QWidget(centralWidget);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(10, 270, 511, 371));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);

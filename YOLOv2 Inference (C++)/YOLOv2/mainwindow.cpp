@@ -10,6 +10,18 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
+    graphicsView = new MyGraphicsView();
+    ui->verticalLayout->addWidget(graphicsView);
+
+    scene = new QGraphicsScene();
+    graphicsView->setScene(scene);
+    //graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
+
+    //graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    //graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+
     connect(ui->selectModel_button, &QPushButton::clicked, this,  &MainWindow::selectModelDialog);
     connect(ui->selectImage_button, &QPushButton::clicked, this,  &MainWindow::selectImageDialog);
 
@@ -99,7 +111,8 @@ bool MainWindow::loadFile(const QString &fileName)
     // https://forum.qt.io/topic/61684/tinting-a-qpixmap-using-qpainter-compositionmode_overlay/3
     QPainter *p = new QPainter(&pixmap);
     //p->setRenderHint(QPainter::Antialiasing);
-    p->setPen(QColor(0, 255, 0,255));
+    p->setCompositionMode(QPainter::CompositionMode_Clear);
+    p->setPen(QPen(QColor(0, 255, 0,255), 1.5));
     p->drawRect(15, 15, 100, 100);
 
 
@@ -112,7 +125,9 @@ bool MainWindow::loadFile(const QString &fileName)
     item->setPixmap(*pix); // Added this line
     */
 
-    ui->imageLabel->setPixmap(pixmap.scaled(ui->imageLabel->width(), ui->imageLabel->height(), Qt::KeepAspectRatio));
+    // ui->imageLabel->setPixmap(pixmap.scaled(ui->imageLabel->width(), ui->imageLabel->height(), Qt::KeepAspectRatio));
+
+    scene->addPixmap(pixmap); // .scaled(ui->imageLabel->width(), ui->imageLabel->height(), Qt::KeepAspectRatio)
 
     return true;
 }

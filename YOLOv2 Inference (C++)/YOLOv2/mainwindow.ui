@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>270</y>
+      <y>650</y>
       <width>511</width>
-      <height>511</height>
+      <height>131</height>
      </rect>
     </property>
     <property name="text">
@@ -259,6 +259,17 @@
     <property name="text">
      <string>Update</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>270</y>
+      <width>511</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout"/>
    </widget>
   </widget>
  </widget>

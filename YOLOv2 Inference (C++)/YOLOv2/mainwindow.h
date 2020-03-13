@@ -10,6 +10,40 @@
 #include <QImage>
 #include <QImageReader>
 #include <QPainter>
+#include <QGraphicsView>
+#include <QWheelEvent>
+
+
+class MyGraphicsView : public QGraphicsView
+{
+    Q_OBJECT
+
+public:
+    explicit MyGraphicsView(QWidget* parent = nullptr) : QGraphicsView(parent) {}
+
+private:
+
+    int m_originX, m_originY;
+
+protected Q_SLOTS:
+
+    void wheelEvent(QWheelEvent *event)
+    {
+    if(event->delta() > 0)
+        scale(1.1, 1.1);
+    else
+        scale(0.9, 0.9);
+    }
+
+    /*
+    void resizeEvent(QResizeEvent  *event)
+    {
+        fitInView(scene()->sceneRect(), Qt::KeepAspectRatio);
+    }
+    */
+
+};
+
 
 namespace Ui {
 class MainWindow;
@@ -30,6 +64,10 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+    MyGraphicsView *graphicsView;
+    QGraphicsScene *scene;
+    QGraphicsPixmapItem *item;
 
     bool loadFile(const QString &);
     void setImage(const QImage &newImage);
