@@ -14,24 +14,14 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="imageLabel">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>650</y>
-      <width>511</width>
-      <height>131</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="selectImage_button">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>140</y>
+      <y>130</y>
       <width>31</width>
       <height>23</height>
      </rect>
@@ -105,10 +95,13 @@
     </property>
    </widget>
    <widget class="QLineEdit" name="imagePath_lineEdit">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>9</x>
-      <y>142</y>
+      <y>132</y>
       <width>471</width>
       <height>20</height>
      </rect>
@@ -117,11 +110,14 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="labelPathToImage">
+   <widget class="QLabel" name="imagePath_label">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>9</x>
-      <y>122</y>
+      <y>112</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -134,7 +130,7 @@
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>90</y>
+      <y>80</y>
       <width>31</width>
       <height>23</height>
      </rect>
@@ -147,7 +143,7 @@
     <property name="geometry">
      <rect>
       <x>9</x>
-      <y>72</y>
+      <y>62</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -163,7 +159,7 @@
     <property name="geometry">
      <rect>
       <x>9</x>
-      <y>92</y>
+      <y>82</y>
       <width>471</width>
       <height>20</height>
      </rect>
@@ -176,6 +172,9 @@
     </property>
    </widget>
    <widget class="QSlider" name="horizontalSlider">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -189,6 +188,9 @@
     </property>
    </widget>
    <widget class="QSlider" name="NMSThreshold_slider">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -202,6 +204,9 @@
     </property>
    </widget>
    <widget class="QDoubleSpinBox" name="doubleSpinBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>280</x>
@@ -212,6 +217,9 @@
     </property>
    </widget>
    <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>280</x>
@@ -222,6 +230,9 @@
     </property>
    </widget>
    <widget class="QLabel" name="labelObjectThreshold">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -235,6 +246,9 @@
     </property>
    </widget>
    <widget class="QLabel" name="NMSThreshold_l">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -248,6 +262,9 @@
     </property>
    </widget>
    <widget class="QPushButton" name="update_button">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -266,10 +283,23 @@
       <x>10</x>
       <y>270</y>
       <width>511</width>
-      <height>371</height>
+      <height>511</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout"/>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>173</y>
+      <width>161</width>
+      <height>86</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Timings [ms]</string>
+    </property>
    </widget>
   </widget>
  </widget>

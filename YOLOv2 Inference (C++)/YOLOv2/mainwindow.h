@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 #include "../../TF DLL/TF.h"
+#include "../../YOLOv2 DLL/YOLOv2.h"
 
 #include <QFileDialog>
 #include <QMessageBox>
@@ -64,6 +65,18 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+    int IMAGE_W;
+    int IMAGE_H;
+
+    float* input_tensor;
+    float* output_tensor;
+
+    float* x_out;
+    float* y_out;
+    float* w_out;
+    float* h_out;
+    int* c_out;
 
     MyGraphicsView *graphicsView;
     QGraphicsScene *scene;

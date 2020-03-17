@@ -59,8 +59,8 @@ void MainWindow::selectModelDialog()
 
     char* file = _strdup(modelFileName.toStdString().c_str());
 
-    int IMAGE_H = settings.value("IMAGE_H").toInt();
-    int IMAGE_W = settings.value("IMAGE_W").toInt();
+    IMAGE_H = settings.value("IMAGE_H").toInt();
+    IMAGE_W = settings.value("IMAGE_W").toInt();
     int GRID_H = settings.value("GRID_H").toInt();
     int GRID_W = settings.value("GRID_W").toInt();
     int BOXES = settings.value("BOXES").toInt();
@@ -72,18 +72,53 @@ void MainWindow::selectModelDialog()
     int in_dim = 4;
     char* in_name = _strdup(INPUT_NODE_NAME.toStdString().c_str());
 
+    int input_size = 1;
+    for (int i = 0; i < in_dim; i++)
+        input_size *= in_shape[i];
+    free(input_tensor);
+    input_tensor = (float *) calloc(input_size, sizeof(float));
+
     int64_t out_shape[] = {1, GRID_W, GRID_H, BOXES, 5 + CLASSES};
     int out_dim = 5;
     char* out_name = _strdup(OUTPUT_NODE_NAME.toStdString().c_str());
 
-    /*
+    int output_size = 1;
+    for (int i = 0; i < out_dim; i++)
+        output_size *= out_shape[i];
+    free(output_tensor);
+    output_tensor = (float *) calloc(output_size, sizeof(float));
+
+
     QStringList ANCHORS = settings.value("ANCHORS").toStringList();
     float *anchors = (float *)malloc(sizeof(float)*ANCHORS.size());
     for (int i = 0; i < ANCHORS.size(); i++)
         anchors[i] = ANCHORS[i].toFloat();
-    */
+
 
     qDebug() << setupTF(file, in_shape, in_dim, in_name, out_shape, out_dim, out_name);
+
+    x_out = (float *)calloc(100, sizeof(float));
+    y_out = (float *)calloc(100, sizeof(float));
+    w_out = (float *)calloc(100, sizeof(float));
+    h_out = (float *)calloc(100, sizeof(float));
+    c_out = (int *)calloc(100, sizeof(int));
+
+    qDebug() << IMAGE_W << IMAGE_H << GRID_W << GRID_H << BOXES << CLASSES << ANCHORS.size();
+
+    qDebug() << setupYOLO(IMAGE_W, IMAGE_H, GRID_W, GRID_H, BOXES, CLASSES, anchors, 100);
+
+    //if () {
+        ui->imagePath_label->setEnabled(true);
+        ui->imagePath_lineEdit->setEnabled(true);
+        ui->selectImage_button->setEnabled(true);
+    //}
+    /*else {
+        ui->imagePath_label->setEnabled(false);
+        ui->imagePath_lineEdit->setEnabled(false);
+        ui->selectImage_button->setEnabled(false);
+    }*/
+
+
 
     //qDebug() << (char*)file << in_shape << in_dim << (char*)in_name << out_shape << out_dim << (char*)out_name;
 }
@@ -92,29 +127,50 @@ void MainWindow::selectImageDialog()
 {
     QString imageFileName = QFileDialog::getOpenFileName(this, "Open Image", "../../YOLOv2 Training (Python)/images/test_images", "JPG Files (*.jpg)");
     loadFile(imageFileName);
+    ui->imagePath_lineEdit->setText(imageFileName);
+
 }
 
 
 bool MainWindow::loadFile(const QString &fileName)
 {
-    QImageReader reader(fileName);
-    reader.setAutoTransform(true);
-    const QImage newImage = reader.read();
-    if (newImage.isNull()) {
+    //QImageReader reader(fileName);
+    //reader.setAutoTransform(true);
+    QImage image = QImageReader(fileName).read().convertToFormat(QImage::Format_RGB888);
+    if (image.isNull()) {
         QMessageBox::information(this, QGuiApplication::applicationDisplayName(), "...");
         return false;
     }
 
-    QImage image = newImage;
+    //QImage image = newImage;
     QPixmap pixmap = QPixmap::fromImage(image);
 
     // https://forum.qt.io/topic/61684/tinting-a-qpixmap-using-qpainter-compositionmode_overlay/3
     QPainter *p = new QPainter(&pixmap);
-    //p->setRenderHint(QPainter::Antialiasing);
-    p->setCompositionMode(QPainter::CompositionMode_Clear);
-    p->setPen(QPen(QColor(0, 255, 0,255), 1.5));
-    p->drawRect(15, 15, 100, 100);
 
+    uint8_t *bits = image.bits();
+    for (int i = 0; i < (image.width()*image.height()*3); i++)
+    {
+        input_tensor[i] = (float)bits[i]/255.;
+    }
+
+    runTF(input_tensor, output_tensor);
+
+    int *n_out = new int(0);
+    decodeYOLO(output_tensor, 0.6, 0.45, n_out, x_out, y_out, w_out, h_out, c_out);
+    qDebug() << *n_out;
+
+    p->setPen(QPen(QColor(0, 255, 0,255), 1));
+    for (int i = 0; i < *n_out; i++)
+    {
+        p->drawRect((x_out[i]-0.5*w_out[i])*IMAGE_W, (y_out[i]-0.5*w_out[i])*IMAGE_H, w_out[i]*IMAGE_W, h_out[i]*IMAGE_H);
+    }
+
+    /*
+    for (int i = 0; i < 10; i++) {
+        qDebug() << output_tensor[i];
+    }
+    */
 
     /*
     QPixmap *pix = new QPixmap(500,500);

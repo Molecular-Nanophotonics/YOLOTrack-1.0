@@ -1,5 +1,20 @@
+/* Copyright 2020 Martin Fränzl, Molecular Nanophotonics Group. All Rights Reserved.
+
+Licensed under the GNU General Public License, Version 3.0;
+You may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://opensource.org/licenses/GPL-3.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*/
+
 #include <windows.h>
 #include <vector>
+
+#include "YOLOv2.h"
 
 int IMAGE_W = 416;
 int IMAGE_H = 416;
@@ -18,13 +33,9 @@ int* _c;
 float* _score;
 int* idx_list;
 
-extern "C" __declspec(dllexport) int setupYOLO(int image_w, int image_h, int grid_w, int grid_h, int boxes, int classes, float* anchors, int n);
-extern "C" __declspec(dllexport) int decodeYOLO(float* output_tensor, float obj_threshold, float nms_threshold, int* n_out, float* x_out, float* y_out, float* w_out, float* h_out, int* c_out);
-
 float sigmoid(float x);
 int entry_index(int row, int col, int box, int entry);
 float box_iou(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
-
 
 BOOL WINAPI DllMain(
 	HINSTANCE hinstDLL, // Handle to DLL module.

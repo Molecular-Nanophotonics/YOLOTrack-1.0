@@ -31,7 +31,11 @@ FORMS += \
 
 #LIBS += $$PWD/MyDLL/x64/Release/MyDLL.dll
 
-win32:CONFIG(release, debug|release): LIBS += "-L../../TF DLL/x64/release/" -lTF
+win32:CONFIG(release, debug|release): LIBS += "-L../../TF DLL/x64/release/" -lTF \
+                                              "-L../../YOLOv2 DLL/x64/release/" -lYOLOv2
 
-INCLUDEPATH += ../../TF DLL/TF.h
-DEPENDPATH += ../../TF DLL/TF.h
+INCLUDEPATH += ../../TF DLL/TF.h \
+               ../../YOLOv2 DLL/YOLOv2.h
+
+DEPENDPATH += ../../TF DLL/TF.h \
+              ../../YOLOv2 DLL/YOLOv2.h
