@@ -36,10 +36,15 @@ The `TF.dll` is a general TensorFlow library for model inference build on top of
 
  The framework requires Windows and a GPU that supports the TensorFlow 1.x GPU version. It has been tested on the following systems:
  - Windows 7, 64-Bit
- - Intel Core i7 2600 4×3.40 GHz CPU
+ - Intel Core i7 2600 4 × 3.40 GHz CPU
  - GeForce GTX 1660 Ti GPU
- - TensorFlow 1.14 + CUDA 10.0
+ - TensorFlow 1.14.0 + CUDA 10.0
 
+ - Windows 7, 64-Bit
+ - Intel Core i7 3820 4 × 3.60 GHz CPU
+ - GeForce GTX 1050 Ti GPU
+ - TensorFlow 1.13.0 + CUDA 10.0
+ 
 ## Setup Instructions
 
 The framework requires:
