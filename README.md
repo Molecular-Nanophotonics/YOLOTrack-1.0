@@ -1,19 +1,15 @@
 # YOLOv2 Framework for Digital Microscopy
 
-This is the maintained version of Code 1 in:
-
-[1] M. Fränzl and F. Cichos, Real-Time Detection and Classification for DigitalMicroscopy using Single-Shot Convolutional Neural Networks, *...*" 
+M. Fränzl and F. Cichos, Real-Time Detection and Classification for Digital Microscopy using Single-Shot Convolutional Neural Networks, *...*, (2020)" 
 
 ## Content
 
 - [Discription](#discription)
 - [Repository Contents](#repository-contents)
-- [System Requirements](#system-requirements)
-- [Setup Instructions](#installation-guide)
-- [Instructions for Use](#instructions-for-use)
+- [Users Guide](#users-guide)
+- [System Requirements and Setup Instructions](#system-requirements-and-setup-instructions)
 - [Data Availability](#data-availability)
 - [License](./LICENSE)
-
 
 ## Discription 
 
@@ -44,7 +40,6 @@ The TF.dll is a general TensorFlow library for model inference build on top of t
 ## Data Availability
 
 A sample data set for training as well as the corresponding trained model is availbale at ...
-
 
 
 
