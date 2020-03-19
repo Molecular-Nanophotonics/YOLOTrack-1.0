@@ -1,6 +1,6 @@
 # YOLOv2 Framework for Digital Microscopy
 
-M. Fränzl *et al.*, Real-Time Detection and Classification for Digital Microscopy using Single-Shot Convolutional Neural Networks, *...*, (2020) 
+*M. Fränzl*, Molecular Nanophtonics Group
 
 ## Content
 
