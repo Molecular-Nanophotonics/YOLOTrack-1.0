@@ -29,18 +29,17 @@ Here, we provide examples for the training in Python/Keras and for the model inf
 - [YOLOv2 Inference (LabVIEW)](./YOLOv2%20Inference%20(LabVIEW)): Example for importing and running a trained YOLOv2 model in C++ 
 - [YOLOv2 Inference (C++)](./YOLOv2%20Inference%20(C%2B%2B)): Example for importing and running a trained YOLOv2 model in LabVIEW
 
-The `TF.dll` is a library for the inference of TensorFlow models that can be used with any TensorFlow model. It is a mirror of [TF-Framework/TF DLL](https://github.com/Molecular-Nanophotonics/TF-Framework). The `YOLOv2.dll` adds specific functions required for YOLO, e.g., the decoding of the output tensor.
+## User Guide
 
-
-## System Requirements
-
-## Installation Guide
-
-## Instructions for Use
-
-The network is implemented in Python/Keras using the TensorFlow backend. For real-time inference the trained model is exported to a custom, C based dynamic link library (TF.dll). The DLL is based on the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) providing the fastest possible image processing and is readily integrable in other programming languages such as LabVIEW and C++.
+The network is trained and evaluated in Python/Keras using the TensorFlow backend. For real-time inferencethe model graph is exported as protocol buffer file (*\*.pb*) and parameters required to decode the YOLOv2output are exported to an INI file (*\*.ini*). These files are imported by the C based dynamic link libraries (TF.dll, YOLOv2.dll) that are easily integrable in other programming languages such as LabVIEW and C++. Fig. 1 shows the structure of the framework.
 
 <p align="center"><img src="Resources/Software-Design.png" width=550></p>
+<p style="text-align: center;"><b>Fig. 1</b> The structure of the framework used for training and real-time inference.</p>
+
+The TF.dll is a general TensorFlow library for model inference build on top of the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) (tensorflow.dll) providing the fastest possible image processing. It can be used with any TensorFlow model and is not specific to YOLOv2. It is copy of [TF-Framework/TF DLL](https://github.com/Molecular-Nanophotonics/TF-Framework). The YOLOv2.dll adds specific functions required to decode the YOLOv2 output and does not depend on the [TensorFlow C API](https://www.tensorflow.org/install/lang_c).
+
+## System Requirements and Setup Instructions
+
 
 ## Data Availability
 
