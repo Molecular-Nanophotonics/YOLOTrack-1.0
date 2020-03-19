@@ -7,7 +7,8 @@
 - [Discription](#discription)
 - [Repository Contents](#repository-contents)
 - [Users Guide](#users-guide)
-- [System Requirements and Setup Instructions](#system-requirements-and-setup-instructions)
+- [System Requirements](#system-requirements)
+- [Setup Instructions](#setup-instructions)
 - [License](./LICENSE)
 
 ## Discription 
@@ -22,7 +23,7 @@ This is a framework for the real-time localization and classification of objects
 - [YOLOv2 Inference (LabVIEW)](./YOLOv2%20Inference%20(LabVIEW)): Example for importing and running a trained YOLOv2 model in C++ 
 - [YOLOv2 Inference (C++)](./YOLOv2%20Inference%20(C%2B%2B)): Example for importing and running a trained YOLOv2 model in LabVIEW
 
-## User Guide
+## Users Guide
 
 The network is trained and evaluated in Python/Keras using the TensorFlow backend. For real-time inferencethe model graph is exported as protocol buffer file (`*.pb`) and parameters required to decode the YOLOv2 output are exported to an INI file (`*.ini`). These files are imported by the C based dynamic link libraries `TF.dll`, `YOLOv2.dll` that are easily integrable in other programming languages such as LabVIEW and C++. Fig. 1 shows the structure of the framework.
 
