@@ -1,6 +1,6 @@
 # YOLOv2 Framework for Digital Microscopy
 
-*Martin Fränzl*, Molecular Nanophotonics Group
+This is the maintained version of Code 1 of *"M. Fränzl and F. Cichos, Real-Time Detection and Classification for DigitalMicroscopy using Single-Shot Convolutional Neural Networks, ..."*. 
 
 ## Content
 
@@ -20,6 +20,8 @@ This is a framework for the real-time localization and classification of objects
 The network is implemented in Python/Keras using the TensorFlow backend. For real-time inference the trained model is exported to a custom, C based dynamic link library (TF.dll). The DLL is based on the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) providing the fastest possible image processing and is readily integrable in other programming languages such as LabVIEW and C++.
 
 Here, we provide examples for the training in Python/Keras and for the model inference in LabVIEW and C++.
+
+This repository contains ...
 
 ## Repository Contents
 
