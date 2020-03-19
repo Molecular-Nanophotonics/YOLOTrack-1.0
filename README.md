@@ -8,7 +8,6 @@
 - [Repository Contents](#repository-contents)
 - [Users Guide](#users-guide)
 - [System Requirements and Setup Instructions](#system-requirements-and-setup-instructions)
-- [Data Availability](#data-availability)
 - [License](./LICENSE)
 
 ## Discription 
@@ -43,10 +42,3 @@ The `TF.dll` is a general TensorFlow library for model inference build on top of
 ## Setup Instructions
 
 For setup instructions refer to the `README.md` in each directory. 
-
-## Data Availability
-
-A sample data set for training as well as the corresponding trained model is availbale at ...
-
-
-
