@@ -13,7 +13,7 @@
 
 ## Discription 
 
-This is a framework for the real-time localization and classification of objects in optical microscopy images using a single-shot covolutional neural network YOLO ("You Only Look Once") . We adapted the YOLOv2 architecture enabling to localize and classify objects at very low signal-to-noise ratios for images as large as 416 x 416 px at frame rates of up to 100 fps. Here, we provide the scripts to train the network in Python/Keras using the TensorFlow backend and source codes to run the model inference on a GPU using LabVIEW or C++.
+This is a framework for the real-time localization and classification of objects in optical microscopy images using a single-shot covolutional neural network YOLO ("You Only Look Once") . We adapted the YOLOv2 architecture enabling to localize and classify objects at very low signal-to-noise ratios for images as large as 416 x 416 px at frame rates of up to 100 fps. Here, we provide scripts to train the network in Python/Keras using the TensorFlow backend and source codes to run the model inference on a GPU with C++ or LabVIEW.
 
 ## Repository Contents
 
@@ -32,8 +32,22 @@ The network is trained and evaluated in Python/Keras using the TensorFlow backen
 
 The `TF.dll` is a general TensorFlow library for model inference build on top of the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) (tensorflow.dll) providing the fastest possible image processing. It can be used with any TensorFlow model and is not specific to YOLOv2. It is copy of [TF-Framework/TF DLL](https://github.com/Molecular-Nanophotonics/TF-Framework). The `YOLOv2.dll` adds specific functions required to decode the YOLOv2 output and does not depend on the [TensorFlow C API](https://www.tensorflow.org/install/lang_c).
 
-## System Requirements and Setup Instructions
+## System Requirements
 
+ The framework requires Windows and a GPU that supports the TensorFlow 1.x GPU version. It has been tested on the following systems:
+ - Windows 7, 64-Bit
+ - Intel Core i7 2600 4×3.40 GHz CPU
+ - GeForce GTX 1660 Ti GPU
+ - TensorFlow 1.14 + CUDA 10.0
+
+## Setup Instructions
+
+The framework requires:
+
+[Anaconda](https://www.anaconda.com/download/) with Python 3.6 to be installed.
+and Tensorflow 1.13.1 
+
+For detailed setup instructions refer to the `README.md` in the individual directories. 
 
 ## Data Availability
 
