@@ -6,7 +6,12 @@
 
 - [Discription](#discription)
 - [Repository Contents](#repository-contents)
+- [System Requirements](#system-requirements)
+- [Setup Instructions](#installation-guide)
+- [Instructions for Use](#instructions-for-use)
 - [Data Availability](#data-availability)
+- [License](./LICENSE)
+
 
 ## Discription 
 
@@ -26,7 +31,7 @@ Here, we provide examples for the training in Python/Keras and for the model inf
 
 <p align="center"><img src="Resources/Software-Design.png" width=550></p>
 
-The `TF.dll` is a library for the inference of TensorFlow models that can be used with any TensorFlow model. It is a mirror of [TensorFlow-Framework/TF DLL](https://github.com/Molecular-Nanophotonics/TensorFlow-Framework). The `YOLOv2.dll` adds specific functions required for YOLO, e.g., the decoding of the output tensor.
+The `TF.dll` is a library for the inference of TensorFlow models that can be used with any TensorFlow model. It is a mirror of [TF-Framework/TF DLL](https://github.com/Molecular-Nanophotonics/TensorFlow-Framework). The `YOLOv2.dll` adds specific functions required for YOLO, e.g., the decoding of the output tensor.
 
 ### Training in Python/Keras
 
