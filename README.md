@@ -30,16 +30,16 @@ The network is trained and evaluated in Python/Keras using the TensorFlow backen
 <p align="center"><img src="Resources/Software-Design.png" width=550></p>
 <p style="text-align: center;"><b>Fig. 1</b> Design of the framework used for training and real-time inference.</p>
 
-The `TF.dll` is a general TensorFlow library for model inference build on top of the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) (tensorflow.dll) providing the fastest possible image processing. It can be used with any TensorFlow model and is not specific to YOLOv2. It is copy of [TF-Framework/TF DLL](https://github.com/Molecular-Nanophotonics/TF-Framework). The `YOLOv2.dll` adds specific functions required to decode the YOLOv2 output and does not depend on the [TensorFlow C API](https://www.tensorflow.org/install/lang_c).
+The `TF.dll` is a general TensorFlow library for model inference build on top of the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) (`tensorflow.dll`). It can be used with any TensorFlow model and is not specific to YOLOv2. It is a copy of [TF-Framework/TF DLL](https://github.com/Molecular-Nanophotonics/TF-Framework). The `YOLOv2.dll` adds specific functions required to decode the YOLOv2 output and does not depend on the [TensorFlow C API](https://www.tensorflow.org/install/lang_c).
 
 ## System Requirements
 
- The framework requires Windows and a GPU that supports TensorFlow 1.x. It has been tested on the following systems:
+ The framework requires Windows and a GPU that is supported by TensorFlow 1.1x. It has been tested on the following system:
  - Windows 7, 64-Bit
  - Intel Core i7 2600 4 × 3.40 GHz CPU
  - GeForce GTX 1660 Ti GPU
  - TensorFlow 1.14.0 (GPU) + CUDA 10.0
- 
+
 ## Setup Instructions
 
 For setup instructions refer to the `README.md` in each directory. 
