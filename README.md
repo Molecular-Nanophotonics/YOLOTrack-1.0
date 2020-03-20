@@ -21,7 +21,7 @@ This is a framework for the real-time localization and classification of objects
 - [TF DLL](./TF%20DLL): DLL for running TensorFlow models on GPU (`TF.dll`)
 - [YOLOv2 DLL](./YOLOv2%20DLL): DLL for decoding the YOLOv2 output tensor (`YOLOv2.dll`)
 - [YOLOv2 Inference (LabVIEW)](./YOLOv2%20Inference%20(LabVIEW)): Example for importing and running a trained YOLOv2 model in LabVIEW
-- [YOLOv2 Inference (C++)](./YOLOv2%20Inference%20(C%2B%2B)): Example for importing and running a trained model with Qt/C$++$
+- [YOLOv2 Inference (C++)](./YOLOv2%20Inference%20(C%2B%2B)): Example for importing and running a trained model with Qt/C++
 
 ## Users Guide
 
