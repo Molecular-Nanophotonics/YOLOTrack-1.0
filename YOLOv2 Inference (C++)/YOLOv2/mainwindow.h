@@ -11,40 +11,9 @@
 #include <QImage>
 #include <QImageReader>
 #include <QPainter>
-#include <QGraphicsView>
-#include <QWheelEvent>
+#include <QElapsedTimer>
 
-
-class MyGraphicsView : public QGraphicsView
-{
-    Q_OBJECT
-
-public:
-    explicit MyGraphicsView(QWidget* parent = nullptr) : QGraphicsView(parent) {}
-
-private:
-
-    int m_originX, m_originY;
-
-protected Q_SLOTS:
-
-    void wheelEvent(QWheelEvent *event)
-    {
-    if(event->delta() > 0)
-        scale(1.1, 1.1);
-    else
-        scale(0.9, 0.9);
-    }
-
-    /*
-    void resizeEvent(QResizeEvent  *event)
-    {
-        fitInView(scene()->sceneRect(), Qt::KeepAspectRatio);
-    }
-    */
-
-};
-
+#include "mygraphicsview.h"
 
 namespace Ui {
 class MainWindow;
@@ -61,29 +30,44 @@ public:
 private slots:
     void selectModelDialog();
     void selectImageDialog();
-
+    void objectThreshold_slider_changed();
+    void objectThreshold_doubleSpinBox_changed();
+    void nmsThreshold_slider_changed();
+    void nmsThreshold_doubleSpinBox_changed();
+    void update();
 
 private:
     Ui::MainWindow *ui;
 
-    int IMAGE_W;
-    int IMAGE_H;
+    bool modelState, imageState;
+    int image_w, image_h, grid_h, grid_w, boxes, classes;
+    float *anchors;
+    char *in_name, *out_name;
 
-    float* input_tensor;
-    float* output_tensor;
+    QImage image;
+    float objectThreshold, nmsThreshold;
 
-    float* x_out;
-    float* y_out;
-    float* w_out;
-    float* h_out;
-    int* c_out;
+    float *input_tensor = nullptr;
+    float *output_tensor = nullptr;
+
+    int *n_out;
+    float *x_out = nullptr;
+    float *y_out = nullptr;
+    float *w_out = nullptr;
+    float *h_out = nullptr;
+    int *c_out = nullptr;
 
     MyGraphicsView *graphicsView;
-    QGraphicsScene *scene;
+    QGraphicsScene *graphicsScene;
     QGraphicsPixmapItem *item;
 
-    bool loadFile(const QString &);
-    void setImage(const QImage &newImage);
+    bool loadModel(const QString &);
+    bool loadINI(const QString &);
+    void updateEnabled(bool);
+    bool loadImage(const QString &);
+    //void setImage(const QImage &newImage);
+
+    QElapsedTimer timer;
 };
 
 #endif // MAINWINDOW_H

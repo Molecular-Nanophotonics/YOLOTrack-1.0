@@ -3,6 +3,7 @@
 
 #include <QSettings>
 #include <QDebug>
+#include <QGraphicsPixmapItem>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -10,27 +11,37 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
     graphicsView = new MyGraphicsView();
     ui->verticalLayout->addWidget(graphicsView);
+    graphicsScene = new QGraphicsScene();
+    graphicsView->setScene(graphicsScene);
 
-    scene = new QGraphicsScene();
-    graphicsView->setScene(scene);
-    //graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
+    graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    //graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    //graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-
-    connect(ui->selectModel_button, &QPushButton::clicked, this,  &MainWindow::selectModelDialog);
+    connect(ui->selectModel_button, &QPushButton::clicked,
+            this,  &MainWindow::selectModelDialog);
     connect(ui->selectImage_button, &QPushButton::clicked, this,  &MainWindow::selectImageDialog);
+    connect(ui->update_button, &QPushButton::clicked, this,  &MainWindow::update);
+    connect(ui->objectThreshold_slider, &QSlider::valueChanged, this,  &MainWindow::objectThreshold_slider_changed);
+    connect(ui->objectThreshold_doubleSpinBox, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &MainWindow::objectThreshold_doubleSpinBox_changed);
+    connect(ui->nmsThreshold_slider, &QSlider::valueChanged, this,  &MainWindow::nmsThreshold_slider_changed);
+    connect(ui->nmsThreshold_doubleSpinBox, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &MainWindow::nmsThreshold_doubleSpinBox_changed);
 
-    char tf_version[32];
-    if (!getVersion(tf_version))
-        ui->labelVersion->setText(QString(tf_version));
+    n_out = new int(0);
+
+    char tensorflow_version[32];
+    if (!getVersion(tensorflow_version))
+        ui->tensorflowVersion_label1->setText(QString(tensorflow_version));
         char device_name[32];
         if (!getDeviceName(device_name))
-            ui->labelDeviceName->setText(QString(device_name));
+            ui->deviceName_label1->setText(QString(device_name));
+
+    objectThreshold = ui->objectThreshold_doubleSpinBox->value();
+    nmsThreshold = ui->nmsThreshold_doubleSpinBox->value();
+
+    modelState = false;
+    imageState = false;
 }
 
 MainWindow::~MainWindow()
@@ -41,149 +52,187 @@ MainWindow::~MainWindow()
 
 void MainWindow::selectModelDialog()
 {
-    //QFileDialog dialog(this, tr("Select Model"));
-    //initializeImageFileDialog(dialog, QFileDialog::AcceptOpen);
-
     QString modelFileName = QFileDialog::getOpenFileName(this, "Open Model", "../../YOLOv2 Training (Python)", "Protocol Buffer File (*.pb)");
-
-    qDebug() << modelFileName;
-
-    QFileInfo info(modelFileName);
-    QString iniFileName = info.path() + "/" + info.baseName() + ".ini";
-
-    ui->modelPath_lineEdit->setText(modelFileName);
-
-    qDebug() << iniFileName;
-
-    QSettings settings(iniFileName, QSettings::IniFormat);
-
-    char* file = _strdup(modelFileName.toStdString().c_str());
-
-    IMAGE_H = settings.value("IMAGE_H").toInt();
-    IMAGE_W = settings.value("IMAGE_W").toInt();
-    int GRID_H = settings.value("GRID_H").toInt();
-    int GRID_W = settings.value("GRID_W").toInt();
-    int BOXES = settings.value("BOXES").toInt();
-    int CLASSES = settings.value("CLASSES").toInt();
-    QString INPUT_NODE_NAME = settings.value("INPUT_NODE_NAME").toString();
-    QString OUTPUT_NODE_NAME = settings.value("OUTPUT_NODE_NAME").toString();
-
-    int64_t in_shape[] = {1, IMAGE_W, IMAGE_H, 3};
-    int in_dim = 4;
-    char* in_name = _strdup(INPUT_NODE_NAME.toStdString().c_str());
-
-    int input_size = 1;
-    for (int i = 0; i < in_dim; i++)
-        input_size *= in_shape[i];
-    free(input_tensor);
-    input_tensor = (float *) calloc(input_size, sizeof(float));
-
-    int64_t out_shape[] = {1, GRID_W, GRID_H, BOXES, 5 + CLASSES};
-    int out_dim = 5;
-    char* out_name = _strdup(OUTPUT_NODE_NAME.toStdString().c_str());
-
-    int output_size = 1;
-    for (int i = 0; i < out_dim; i++)
-        output_size *= out_shape[i];
-    free(output_tensor);
-    output_tensor = (float *) calloc(output_size, sizeof(float));
-
-
-    QStringList ANCHORS = settings.value("ANCHORS").toStringList();
-    float *anchors = (float *)malloc(sizeof(float)*ANCHORS.size());
-    for (int i = 0; i < ANCHORS.size(); i++)
-        anchors[i] = ANCHORS[i].toFloat();
-
-
-    qDebug() << setupTF(file, in_shape, in_dim, in_name, out_shape, out_dim, out_name);
-
-    x_out = (float *)calloc(100, sizeof(float));
-    y_out = (float *)calloc(100, sizeof(float));
-    w_out = (float *)calloc(100, sizeof(float));
-    h_out = (float *)calloc(100, sizeof(float));
-    c_out = (int *)calloc(100, sizeof(int));
-
-    qDebug() << IMAGE_W << IMAGE_H << GRID_W << GRID_H << BOXES << CLASSES << ANCHORS.size();
-
-    qDebug() << setupYOLO(IMAGE_W, IMAGE_H, GRID_W, GRID_H, BOXES, CLASSES, anchors, 100);
-
-    //if () {
-        ui->imagePath_label->setEnabled(true);
-        ui->imagePath_lineEdit->setEnabled(true);
-        ui->selectImage_button->setEnabled(true);
-    //}
-    /*else {
-        ui->imagePath_label->setEnabled(false);
-        ui->imagePath_lineEdit->setEnabled(false);
-        ui->selectImage_button->setEnabled(false);
-    }*/
-
-
-
-    //qDebug() << (char*)file << in_shape << in_dim << (char*)in_name << out_shape << out_dim << (char*)out_name;
+    if (!modelFileName.isEmpty()) {
+        modelState = loadModel(modelFileName);
+        if (modelState) {
+            ui->modelPath_lineEdit->setText(modelFileName);
+            ui->imagePath_lineEdit->setEnabled(true);
+            ui->selectImage_button->setEnabled(true);
+            if (imageState) {
+                ui->imagePath_lineEdit->clear();
+                ui->runTime_label->clear();
+                ui->decodeTime_label->clear();
+                graphicsScene->clear();
+                updateEnabled(false);
+            }
+        }
+    }
 }
+
 
 void MainWindow::selectImageDialog()
 {
     QString imageFileName = QFileDialog::getOpenFileName(this, "Open Image", "../../YOLOv2 Training (Python)/images/test_images", "JPG Files (*.jpg)");
-    loadFile(imageFileName);
-    ui->imagePath_lineEdit->setText(imageFileName);
-
+    if (!imageFileName.isEmpty()) {
+        imageState = loadImage(imageFileName);
+        if (imageState) {
+            ui->imagePath_lineEdit->setText(imageFileName);
+            if (modelState) {
+                updateEnabled(true);
+                update();
+            }
+        }
+    }
 }
 
 
-bool MainWindow::loadFile(const QString &fileName)
+void MainWindow::updateEnabled(bool state)
 {
-    //QImageReader reader(fileName);
-    //reader.setAutoTransform(true);
-    QImage image = QImageReader(fileName).read().convertToFormat(QImage::Format_RGB888);
+    ui->update_button->setEnabled(state);
+    ui->objectThreshold_slider->setEnabled(state);
+    ui->objectThreshold_doubleSpinBox->setEnabled(state);
+    ui->nmsThreshold_slider->setEnabled(state);
+    ui->nmsThreshold_doubleSpinBox->setEnabled(state);
+}
+
+
+void MainWindow::update()
+{
+    timer.start();
+    runTF(input_tensor, output_tensor);
+    ui->runTime_label->setText(QString::number(0.000000001*timer.nsecsElapsed(), 'f', 5));
+
+    timer.start();
+    decodeYOLO(output_tensor, objectThreshold, nmsThreshold, n_out, x_out, y_out, w_out, h_out, c_out);
+    ui->decodeTime_label->setText(QString::number(0.000000001*timer.nsecsElapsed(), 'f', 5));
+
+    QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+    pixmapItem->setFlags(QGraphicsItem::ItemIsMovable);
+
+    graphicsScene->clear();
+
+    QVector<QColor> colors = {Qt::cyan, Qt::yellow, Qt::green, Qt::blue, Qt::red}; // QColor(255, 255, 0);
+
+    QGraphicsItemGroup *itemGroup = new QGraphicsItemGroup();
+    itemGroup->addToGroup(pixmapItem);
+    QPen(Qt::red, 1);
+    for (int i = 0; i < *n_out; i++)
+    {
+        QGraphicsRectItem *rectItem = new QGraphicsRectItem((x_out[i]-0.5*w_out[i])*image_w, (y_out[i]-0.5*w_out[i])*image_h, w_out[i]*image_w, h_out[i]*image_h);
+        rectItem->setPen(QPen(colors[c_out[i] % colors.length()], 1));
+        itemGroup->addToGroup(rectItem);
+    }
+    itemGroup->setFlags(QGraphicsItem::ItemIsMovable);
+    graphicsScene->addItem(itemGroup);
+}
+
+
+void MainWindow::objectThreshold_slider_changed()
+{
+    objectThreshold = 0.01*ui->objectThreshold_slider->value();
+    ui->objectThreshold_doubleSpinBox->setValue(objectThreshold);
+    update();
+}
+
+void MainWindow::objectThreshold_doubleSpinBox_changed()
+{
+    objectThreshold = ui->objectThreshold_doubleSpinBox->value();
+    ui->objectThreshold_slider->setValue(objectThreshold*100);
+    update();
+}
+
+void MainWindow::nmsThreshold_slider_changed()
+{
+    nmsThreshold = 0.01*ui->nmsThreshold_slider->value();
+    ui->nmsThreshold_doubleSpinBox->setValue(nmsThreshold);
+    update();
+}
+
+void MainWindow::nmsThreshold_doubleSpinBox_changed()
+{
+    nmsThreshold = ui->nmsThreshold_doubleSpinBox->value();
+    ui->nmsThreshold_slider->setValue(nmsThreshold*100);
+    update();
+}
+
+
+bool MainWindow::loadImage(const QString &imageFileName)
+{
+    image = QImageReader(imageFileName).read().convertToFormat(QImage::Format_RGB888);
+
     if (image.isNull()) {
         QMessageBox::information(this, QGuiApplication::applicationDisplayName(), "...");
         return false;
     }
-
-    //QImage image = newImage;
-    QPixmap pixmap = QPixmap::fromImage(image);
-
-    // https://forum.qt.io/topic/61684/tinting-a-qpixmap-using-qpainter-compositionmode_overlay/3
-    QPainter *p = new QPainter(&pixmap);
 
     uint8_t *bits = image.bits();
     for (int i = 0; i < (image.width()*image.height()*3); i++)
     {
         input_tensor[i] = (float)bits[i]/255.;
     }
+    return true;
+}
 
-    runTF(input_tensor, output_tensor);
 
-    int *n_out = new int(0);
-    decodeYOLO(output_tensor, 0.6, 0.45, n_out, x_out, y_out, w_out, h_out, c_out);
-    qDebug() << *n_out;
+bool MainWindow::loadModel(const QString &modelFileName)
+{
+    char* model_file_name = _strdup(modelFileName.toStdString().c_str());
 
-    p->setPen(QPen(QColor(0, 255, 0,255), 1));
-    for (int i = 0; i < *n_out; i++)
-    {
-        p->drawRect((x_out[i]-0.5*w_out[i])*IMAGE_W, (y_out[i]-0.5*w_out[i])*IMAGE_H, w_out[i]*IMAGE_W, h_out[i]*IMAGE_H);
-    }
+    QFileInfo info(modelFileName);
+    QString iniFileName = info.path() + "/" + info.baseName() + ".ini";
+    loadINI(iniFileName);
 
-    /*
-    for (int i = 0; i < 10; i++) {
-        qDebug() << output_tensor[i];
-    }
-    */
+    int64_t in_shape[] = {1, image_w, image_h, 3};
 
-    /*
-    QPixmap *pix = new QPixmap(500,500);
-    QGraphicsPixmapItem* item(scene->addPixmap(*pix)); // Save the returned item
-    QPainter *paint = new QPainter(pix);
-    paint->setPen(*(new QColor(255,34,255,255)));
-    paint->drawRect(15,15,100,100);
-    item->setPixmap(*pix); // Added this line
-    */
+    int in_dim = 4;
+    int input_size = 1;
+    for (int i = 0; i < in_dim; i++)
+        input_size *= in_shape[i];
 
-    // ui->imageLabel->setPixmap(pixmap.scaled(ui->imageLabel->width(), ui->imageLabel->height(), Qt::KeepAspectRatio));
+    free(input_tensor);
+    input_tensor = (float *) calloc(input_size, sizeof(float));
 
-    scene->addPixmap(pixmap); // .scaled(ui->imageLabel->width(), ui->imageLabel->height(), Qt::KeepAspectRatio)
+    int64_t out_shape[] = {1, grid_w, grid_h, boxes, 5 + classes};
+    int out_dim = 5;
+    int output_size = 1;
+    for (int i = 0; i < out_dim; i++)
+        output_size *= out_shape[i];
+    free(output_tensor);
+    output_tensor = (float *) calloc(output_size, sizeof(float));
+
+    x_out = (float *)realloc(x_out, 100*sizeof(float));
+    y_out = (float *)realloc(y_out, 100*sizeof(float));
+    w_out = (float *)realloc(w_out, 100*sizeof(float));
+    h_out = (float *)realloc(h_out, 100*sizeof(float));
+    c_out = (int *)realloc(c_out, 100*sizeof(int));
+
+    setupTF(model_file_name, in_shape, in_dim, in_name, out_shape, out_dim, out_name);
+    setupYOLO(image_w, image_h, grid_w, grid_h, boxes, classes, anchors, 100);
 
     return true;
+}
+
+bool MainWindow::loadINI(const QString &iniFileName)
+{
+    QSettings settings(iniFileName, QSettings::IniFormat);
+
+    image_h = settings.value("IMAGE_H").toInt();
+    image_w = settings.value("IMAGE_W").toInt();
+    grid_h = settings.value("GRID_H").toInt();
+    grid_w = settings.value("GRID_W").toInt();
+    boxes = settings.value("BOXES").toInt();
+    classes = settings.value("CLASSES").toInt();
+
+    QString INPUT_NODE_NAME = settings.value("INPUT_NODE_NAME").toString();
+    in_name = _strdup(INPUT_NODE_NAME.toStdString().c_str());
+
+    QString OUTPUT_NODE_NAME = settings.value("OUTPUT_NODE_NAME").toString();
+    out_name = _strdup(OUTPUT_NODE_NAME.toStdString().c_str());
+
+    QStringList ANCHORS = settings.value("ANCHORS").toStringList();
+    anchors = (float *)malloc(sizeof(float)*ANCHORS.size());
+    for (int i = 0; i < ANCHORS.size(); i++)
+        anchors[i] = ANCHORS[i].toFloat();
+
 }
