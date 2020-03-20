@@ -17,11 +17,11 @@ This is a framework for the real-time localization and classification of objects
 
 ## Repository Contents
 
-- [YOLOv2 Training (Python)](./YOLOv2%20Training%20(Python)): Jupyter Notebooks for training and exporting YOLOv2 models with Python/Keras using the TensorFlow backend
+- [YOLOv2 Training (Python)](./YOLOv2%20Training%20(Python)):  Jupyter notebooks and Python modules for synthetic image generation, training and exporting YOLOv2 models with Python/Keras using the TensorFlow backend
 - [TF DLL](./TF%20DLL): DLL for running TensorFlow models on GPU (`TF.dll`)
 - [YOLOv2 DLL](./YOLOv2%20DLL): DLL for decoding the YOLOv2 output tensor (`YOLOv2.dll`)
-- [YOLOv2 Inference (LabVIEW)](./YOLOv2%20Inference%20(LabVIEW)): Example for importing and running a trained YOLOv2 model in C++ 
-- [YOLOv2 Inference (C++)](./YOLOv2%20Inference%20(C%2B%2B)): Example for importing and running a trained YOLOv2 model in LabVIEW
+- [YOLOv2 Inference (LabVIEW)](./YOLOv2%20Inference%20(LabVIEW)): Example for importing and running a trained YOLOv2 model in LabVIEW
+- [YOLOv2 Inference (C++)](./YOLOv2%20Inference%20(C%2B%2B)): Example for importing and running a trained model with Qt/C$++$
 
 ## Users Guide
 
