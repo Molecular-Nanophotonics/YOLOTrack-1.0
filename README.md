@@ -28,10 +28,8 @@ This is a framework for the real-time localization and classification of objects
 The network is trained and evaluated in Python/Keras using the TensorFlow backend. For real-time inferencethe model graph is exported as protocol buffer file (`*.pb`) and parameters required to decode the YOLOv2 output are exported to an INI file (`*.ini`). These files are imported by the C based dynamic link libraries `TF.dll`, `YOLOv2.dll` that are easily integrable in other programming languages such as LabVIEW and C++. Fig. 1 shows the structure of the framework.
 
 <p align="center">
-  <img src="Resources/Software-Design.png" width=550>
-  <p>
-    <b>Fig. 1</b> Design of the framework used for training and real-time inference.
-  </p>
+  <img src="Resources/Software-Design.png" width=550> <br>
+  <b>Fig. 1</b> Design of the framework used for training and real-time inference.
 </p>
 
 The `TF.dll` is a general TensorFlow library for model inference build on top of the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) (`tensorflow.dll`). It can be used with any TensorFlow model and is not specific to YOLOv2. It is a copy of [TF-Framework/TF DLL](https://github.com/Molecular-Nanophotonics/TF-Framework). The `YOLOv2.dll` adds specific functions required to decode the YOLOv2 output and does not depend on the [TensorFlow C API](https://www.tensorflow.org/install/lang_c).
