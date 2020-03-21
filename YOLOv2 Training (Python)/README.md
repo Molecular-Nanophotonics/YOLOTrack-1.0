@@ -10,7 +10,7 @@ This repository contains Jupyter notebooks and Python modules for synthetic imag
 
 - [Anaconda](https://www.anaconda.com/distribution/) for Python 3.x + TensorFlow 1.1x
 
-## Repository Contents
+## User's Guide
 
 - [ImageGenerator.ipynb](ImageGenerator.ipynb): This notebook shows how to generate a synthetic image dataset for training. It depends on the **image_generator** and **xml_writer** module. The **image_generator** module implements the synthetic image generation whereas the **xml_writer** provides functions to save the annotations the Pascal VOC format. A sample dataset generated with this notebook is contained in the **images** directory. 
 
