@@ -16,5 +16,5 @@ This repository contains Jupyter notebooks and Python modules for synthetic imag
 
 - [Training.ipynb](Training.ipynb): Notebook that implements YOLOv2 in Keras and demonstrates how to train the model and how to freeze and export the trained model. It depends on **pre_processing** and **utils**. The **pre_processing** module comprises functions to parse the annotations and implements the *BatchGenerator* required for training. The **utils** module provides functions for the output decoding as well as for the model export.
 
-- [Inference.ipynb](Inference.ipynb): Notebook that shows how to load the exported `model.pb` and `model.ini` files and run a model inference. It requires the *utils* module for the output decoding.
+- [Inference.ipynb](Inference.ipynb): Notebook that shows how to load the exported `model.pb` and `model.ini` files and run a model inference. It requires the **utils** module for the output decoding.
 
