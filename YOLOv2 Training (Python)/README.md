@@ -12,9 +12,9 @@ This repository contains Jupyter notebooks and Python modules for synthetic imag
 
 ## Repository Contents
 
-- [ImageGenerator.ipynb](ImageGenerator.ipynb): A notebook that shows how to generate a synthetic image dataset for training. It depends on the "image_generator" and "xml_writer" modules. A sample output from the notebook is contained in the "images" directory. 
+- [ImageGenerator.ipynb](ImageGenerator.ipynb): A notebook that shows how to generate a synthetic image dataset for training. It depends on *image_generator* and *xml_writer*. The *image_generator* module implements the synthetic image generation whereas the *xml_writer* provides function to save annotations the Pascal VOC format. A sample dataset generated with the notebook this notebook is contained in the *images* directory. 
 
-- [Training.ipynb](Training.ipynb): The main notebook that implements and trains YOLOv2 in Keras using the TensorFlow backend. It depends on the "preprocessing" and "utils" modules. The notebook also shows how to export the trained model to the `model.pb` and `model.ini` files 
+- [Training.ipynb](Training.ipynb): Notebook that implements YOLOv2 in Keras and demonstrates how to train the model and how to freeze and export the trained model. It depends on *pre_processing* and *utils*. The *pre_processing* module comprises functions to parse the annotations and implements the `BatchGenerator` required for training. The *utils* module provides functions for the output decoding as well as for the model export.
 
-- [Inference.ipynb](Inference.ipynb): A notebook that shows how to load the exported `model.pb` and `model.ini` files and run a model inference.
+- [Inference.ipynb](Inference.ipynb): A notebook that shows how to load the exported `model.pb` and `model.ini` files and run a model inference. It requires the *utils* module for the output decoding.
 
