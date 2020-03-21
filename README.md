@@ -41,7 +41,7 @@ The `TF.dll` is a library for the inference of TensorFlow models build on top of
  - Intel Core i7 2600 4 × 3.40 GHz CPU
  - GeForce GTX 1660 Ti GPU
  - CUDA Toolkit 10.0 + cuDNN 7.6.4
- - TensorFlow 1.13.1 with GPU suuport
+ - TensorFlow 1.13.1 with GPU support
 
 ## Setup Instructions
 
