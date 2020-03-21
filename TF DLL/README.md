@@ -11,12 +11,12 @@
 - Visual Studio 2015
 - [CUDA Toolkit 10.0](https://developer.nvidia.com/cuda-10.0-download-archive) with Visual Studion Integration installed
 - [CUDNN v7.6.4](https://developer.nvidia.com/rdp/cudnn-archive)
-- [TensorFlow C API](https://www.tensorflow.org/install/lang_c) 1.13.1 GPU: [libtensorflow-gpu-windows-x86_64-1.13.1](https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-windows-x86_64-1.13.1.zip)
+- [TensorFlow C API](https://www.tensorflow.org/install/lang_c) (1.13.1, GPU)
 
 
 ## Users Guide
 
-The DLL is defined in TF.h and designed for ...
+The DLL is defined in [TF.h](TF.h) and designed for ...
 
 
 
