@@ -1,7 +1,5 @@
 # YOLOv2 DLL
 
-# TF DLL 
-
 *M. Fränzl*, Molecular Nanophtonics Group
 
 ## Discription
@@ -9,9 +7,6 @@
 `YOLOv2.dll` is a dynamic link library to decode the YOLOv2 output tensor. The `YOLOv2.dll` is located in [x64/Release](x64/Release) and the documentation for use can be found in [YOLOv2.h](YOLOv2.h).
 
 ## Requirements 
-
-### ... To Use
-
 
 ### ... To Compile from Source Code
 
