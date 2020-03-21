@@ -1,58 +1,20 @@
 # YOLOv2 DLL
 
+# TF DLL 
 
-```c
-int getVersion(char* tf_version)
-/*
-    Description:    This function returns the TensorFlow version. 
+*M. Fränzl*, Molecular Nanophtonics Group
 
-    Parameters:     tf_version (char*): Pointer to a array of characters allocated by the user.
+## Discription
 
-    Return:         int 
-                    1  No Error. 
-                    0  Error.
-*/                
-```
+`YOLOv2.dll` is a dynamic link library to decode the YOLOv2 output tensor. The `YOLOv2.dll` is located in [x64/Release](x64/Release) and the documentation for use can be found in [YOLOv2.h](YOLOv2.h).
 
-```c
-int getGPUs(int* num_gpus)
-/*
-    Description:    This function returns the number of available GPUs. 
+## Requirements 
 
-    Parameters:     num_gpus (int*): Number of available GPUs.
+### ... To Use
 
-    Return:         int:
-                    1  No Error.
-                    0  Error.
-*/
-```
 
-```c
-int setupTF(char* file, int64_t* in_shape, int in_dim, char* in_name, int64_t* out_shape, int out_dim, char* out_name)
-/*
-    Description:    This function sets up the TensorFlow session. 
+### ... To Compile from Source Code
 
-    Parameters:     file (char*): ...
+- [Visual Studio 2015](https://visualstudio.microsoft.com/de/vs/older-downloads/)
 
-    Return:         int:
-                    1  No Error.
-                    0  Error.
-*/
-```
-
-```c
-int runTF(float* input_tensor, float* output_tensor);
-/*
-    Description:    ... 
-
-    Parameters:     input_tensor (float*): ...
-
-    Return:         int:
-                    1  No Error.
-                    0  Error.
-*/
-```
-
-``
-``
 
