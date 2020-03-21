@@ -4,7 +4,7 @@
 
 ## Discription
 
-This is an example on how to use `TF.dll` and `YOLOv2` in a Qt/C++ application.
+Example on how to use `TF.dll` and `YOLOv2` in a Qt/C++ application.
 
 ## Requirements 
 
