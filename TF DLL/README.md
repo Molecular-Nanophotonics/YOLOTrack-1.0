@@ -4,13 +4,13 @@
 
 ## Discription
 
-`TF.dll` is a dynamic link library for model inference build on top of the GPU supported TensorFlow C API (`tensorflow.dll`). 
+`TF.dll` is a dynamic link library for model inference build on top of the GPU supported TensorFlow C API. 
 
 ## Requirements
 
 - Visual Studio 2015
 - CUDA 10.0 with 
-- [TensorFlow C API](https://www.tensorflow.org/install/lang_c) ([tensorflow-gpu-windows-x86_64-1.13.1](https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-windows-x86_64-1.13.1.zip))
+- [TensorFlow C API](https://www.tensorflow.org/install/lang_c): ([libtensorflow-gpu-windows-x86_64-1.13.1](https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-windows-x86_64-1.13.1.zip)
 
 
 ## Users Guide
