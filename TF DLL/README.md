@@ -4,7 +4,7 @@
 
 ## Discription
 
-`TF.dll` is a dynamic link library for model inference build on top of the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c). `TF.dll` is located in [x64/Release](x64/Release) and defined in [TF.h](TF.h)
+`TF.dll` is a dynamic link library for model inference build on top of the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c). The `TF.dll` is located in [x64/Release](x64/Release) and defined in [TF.h](TF.h)
 
 ## Requirements 
 
