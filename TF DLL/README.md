@@ -16,4 +16,4 @@
 
 ## Users Guide
 
-The DLL is documented in [TF.h](TF.h).
+The documentation can be found in [TF.h](TF.h).
