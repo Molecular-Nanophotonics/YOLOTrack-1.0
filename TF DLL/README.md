@@ -10,7 +10,7 @@
 
 - Visual Studio 2015
 - CUDA 10.0 with 
-- [TensorFlow C API](https://www.tensorflow.org/install/lang_c): ([libtensorflow-gpu-windows-x86_64-1.13.1](https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-windows-x86_64-1.13.1.zip)
+- TensorFlow C API: [libtensorflow-gpu-windows-x86_64-1.13.1](https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-windows-x86_64-1.13.1.zip)
 
 
 ## Users Guide
