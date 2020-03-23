@@ -2,11 +2,6 @@
 
 *M. Fränzl*, Molecular Nanophtonics Group
 
-<p align="center">
-  <img src="Resources/YOLOv2-Detection-Example.png" width=380> <br><br>
-  <b>Fig. 1</b> YOLOv2 dedection example.
-</p>
-
 ## Content
 
 - [Discription](#discription)
@@ -19,6 +14,12 @@
 ## Discription 
 
 This is a framework for the real-time localization and classification of objects in optical microscopy images using a single-shot covolutional neural network YOLO ("You Only Look Once") . We adapted the YOLOv2 architecture enabling to localize and classify objects at very low signal-to-noise ratios for images as large as 416 x 416 px at frame rates of up to 100 fps. Here, we provide scripts to train the network in Python/Keras using the TensorFlow backend and source codes to run the model inference on a GPU with C++ or LabVIEW.
+
+<p align="center">
+  <img src="Resources/YOLOv2-Detection-Example.png" width=380> <br><br>
+  <b>Fig. 1</b> YOLOv2 detection for a darkfield microscopy image of nano- and microparticles.
+</p>
+
 
 ## Repository Contents
 
