@@ -17,7 +17,7 @@
 ### ... To Compile from Source Code
 
 - [Visual Studio 2015](https://visualstudio.microsoft.com/de/vs/older-downloads/)
-- [CUDA Toolkit 10.0](https://developer.nvidia.com/cuda-10.0-download-archive) + Visual Studion Integration
+- [CUDA Toolkit 10.0](https://developer.nvidia.com/cuda-10.0-download-archive) with Visual Studion Integration installed
 - [cuDNN 7.4.2](https://developer.nvidia.com/rdp/cudnn-archive)
 - [libtensorflow-gpu-windows-x86_64-1.14.0](https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-windows-x86_64-1.14.0.zip) located at "C:\\"
 
