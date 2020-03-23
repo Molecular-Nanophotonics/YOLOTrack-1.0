@@ -12,7 +12,7 @@
 
 - [CUDA Toolkit 10.0](https://developer.nvidia.com/cuda-10.0-download-archive)
 - [cdDNN 7.4.2](https://developer.nvidia.com/rdp/cudnn-archive)
-- `tensorflow.dll` from [libtensorflow-gpu-windows-x86_64-1.14.0](https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-windows-x86_64-1.14.0.zip) located in the same dirctory as `TF.dll` or at "C:\\Windows\\".
+- `tensorflow.dll` from [libtensorflow-gpu-windows-x86_64-1.14.0](https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-windows-x86_64-1.14.0.zip) located in the same dirctory as `TF.dll` or at "C:\\Windows\\"
 
 ### ... To Compile from Source Code
 
