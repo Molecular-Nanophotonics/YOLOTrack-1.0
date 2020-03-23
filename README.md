@@ -2,8 +2,8 @@
 
 *M. Fränzl\**
 
-Molecular Nanophotonics Group, Peter Debye Institute for Soft Matter Physics, Universitäat Leipzig, Linnestr. 5, 04103 Leipzig, Germany
-\* [martin.fraenzl@physik.uni-leipzig.de](mailto:martin.fraenzl@physik.uni-leipzig.de)
+Molecular Nanophotonics Group, Peter Debye Institute for Soft Matter Physics, Universitäat Leipzig, Linnestr. 5, 04103 Leipzig, Germany <br>
+\*[martin.fraenzl@physik.uni-leipzig.de](mailto:martin.fraenzl@physik.uni-leipzig.de)
 
 ## Content
 
