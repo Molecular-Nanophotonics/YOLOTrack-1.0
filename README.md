@@ -39,7 +39,7 @@ This is a framework for the real-time localization and classification of objects
 The network is trained and evaluated in Python/Keras using the TensorFlow backend. For real-time inferencethe model graph is exported as protocol buffer file (`*.pb`) and parameters required to decode the YOLOv2 output are exported to an INI file (`*.ini`). These files are imported by the C based dynamic link libraries `TF.dll`, `YOLOv2.dll` that are easily integrable in other programming languages such as LabVIEW and C++. Fig. 1 shows the structure of the framework.
 
 <p align="center">
-  <img src="Resources/Software-Design.png" width=550> <br><br>
+  <img src="Resources/YOLOv2-Framework-Design.png" width=550> <br><br>
   <b>Fig. 2</b> Design of the framework used for training and real-time inference.
 </p>
 
