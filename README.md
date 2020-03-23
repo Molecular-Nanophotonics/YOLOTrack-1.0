@@ -3,7 +3,7 @@
 *M. Fränzl*, Molecular Nanophtonics Group
 
 <p align="center">
-  <img src="Resources/YOLOv2-Detection_Example.png" width=550> <br><br>
+  <img src="Resources/YOLOv2-Detection-Example.png" width=380> <br><br>
   <b>Fig. 1</b> YOLOv2 dedection example.
 </p>
 
