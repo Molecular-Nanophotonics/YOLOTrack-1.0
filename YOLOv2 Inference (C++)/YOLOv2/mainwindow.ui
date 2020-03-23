@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>YOLOv2</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="selectImage_button">

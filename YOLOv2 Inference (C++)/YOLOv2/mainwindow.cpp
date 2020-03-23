@@ -19,8 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    connect(ui->selectModel_button, &QPushButton::clicked,
-            this,  &MainWindow::selectModelDialog);
+    connect(ui->selectModel_button, &QPushButton::clicked, this,  &MainWindow::selectModelDialog);
     connect(ui->selectImage_button, &QPushButton::clicked, this,  &MainWindow::selectImageDialog);
     connect(ui->update_button, &QPushButton::clicked, this,  &MainWindow::update);
     connect(ui->objectThreshold_slider, &QSlider::valueChanged, this,  &MainWindow::objectThreshold_slider_changed);
@@ -52,11 +51,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::selectModelDialog()
 {
-    QString modelFileName = QFileDialog::getOpenFileName(this, "Open Model", "../../YOLOv2 Training (Python)", "Protocol Buffer File (*.pb)");
+    QString modelFileName = QFileDialog::getOpenFileName(this, "Open Model", "../../Samples", "Protocol Buffer File (*.pb)");
+    QDir dir;
     if (!modelFileName.isEmpty()) {
         modelState = loadModel(modelFileName);
         if (modelState) {
-            ui->modelPath_lineEdit->setText(modelFileName);
+            ui->modelPath_lineEdit->setText(dir.relativeFilePath(modelFileName));
             ui->imagePath_lineEdit->setEnabled(true);
             ui->selectImage_button->setEnabled(true);
             if (imageState) {
@@ -73,11 +73,12 @@ void MainWindow::selectModelDialog()
 
 void MainWindow::selectImageDialog()
 {
-    QString imageFileName = QFileDialog::getOpenFileName(this, "Open Image", "../../YOLOv2 Training (Python)/images/test_images", "JPG Files (*.jpg)");
+    QString imageFileName = QFileDialog::getOpenFileName(this, "Open Image", "../../Samples", "JPG Files (*.jpg)");
+    QDir dir;
     if (!imageFileName.isEmpty()) {
         imageState = loadImage(imageFileName);
         if (imageState) {
-            ui->imagePath_lineEdit->setText(imageFileName);
+            ui->imagePath_lineEdit->setText(dir.relativeFilePath(imageFileName));
             if (modelState) {
                 updateEnabled(true);
                 update();
@@ -235,4 +236,5 @@ bool MainWindow::loadINI(const QString &iniFileName)
     for (int i = 0; i < ANCHORS.size(); i++)
         anchors[i] = ANCHORS[i].toFloat();
 
+    return true;
 }
