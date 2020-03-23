@@ -1,15 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QSettings>
-#include <QDebug>
-#include <QGraphicsPixmapItem>
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
     graphicsView = new MyGraphicsView();
     ui->verticalLayout->addWidget(graphicsView);
@@ -102,11 +100,11 @@ void MainWindow::update()
 {
     timer.start();
     runTF(input_tensor, output_tensor);
-    ui->runTime_label->setText(QString::number(0.000000001*timer.nsecsElapsed(), 'f', 5));
+    ui->runTime_label->setText(QString::number(1e-6*timer.nsecsElapsed(), 'f', 3));
 
     timer.start();
     decodeYOLO(output_tensor, objectThreshold, nmsThreshold, n_out, x_out, y_out, w_out, h_out, c_out);
-    ui->decodeTime_label->setText(QString::number(0.000000001*timer.nsecsElapsed(), 'f', 5));
+    ui->decodeTime_label->setText(QString::number(1e-6*timer.nsecsElapsed(), 'f', 3));
 
     QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(image));
     pixmapItem->setFlags(QGraphicsItem::ItemIsMovable);
@@ -163,7 +161,7 @@ bool MainWindow::loadImage(const QString &imageFileName)
     image = QImageReader(imageFileName).read().convertToFormat(QImage::Format_RGB888);
 
     if (image.isNull()) {
-        QMessageBox::information(this, QGuiApplication::applicationDisplayName(), "...");
+        //QMessageBox::information(this, QGuiApplication::applicationDisplayName(), "...");
         return false;
     }
 

@@ -139,7 +139,7 @@ public:
         update_button = new QPushButton(centralWidget);
         update_button->setObjectName(QString::fromUtf8("update_button"));
         update_button->setEnabled(false);
-        update_button->setGeometry(QRect(10, 190, 75, 31));
+        update_button->setGeometry(QRect(10, 195, 75, 31));
         verticalLayoutWidget = new QWidget(centralWidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(10, 270, 511, 511));
@@ -158,12 +158,14 @@ public:
         runTime_label->setGeometry(QRect(90, 20, 61, 21));
         runTime_label->setFrameShape(QFrame::Panel);
         runTime_label->setFrameShadow(QFrame::Sunken);
+        runTime_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         decodeTime_label = new QLabel(timings_groupBox);
         decodeTime_label->setObjectName(QString::fromUtf8("decodeTime_label"));
         decodeTime_label->setEnabled(true);
         decodeTime_label->setGeometry(QRect(90, 45, 61, 21));
         decodeTime_label->setFrameShape(QFrame::Panel);
         decodeTime_label->setFrameShadow(QFrame::Sunken);
+        decodeTime_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         runTime_label_2 = new QLabel(timings_groupBox);
         runTime_label_2->setObjectName(QString::fromUtf8("runTime_label_2"));
         runTime_label_2->setEnabled(true);

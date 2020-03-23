@@ -6,13 +6,16 @@
 #include "../../TF DLL/TF.h"
 #include "../../YOLOv2 DLL/YOLOv2.h"
 
-#include <QDir>
+
 #include <QFileDialog>
-#include <QMessageBox>
+#include <QDir>
+#include <QSettings>
 #include <QImage>
 #include <QImageReader>
 #include <QPainter>
+#include <QGraphicsPixmapItem>
 #include <QElapsedTimer>
+#include <QDebug>
 
 #include "mygraphicsview.h"
 
