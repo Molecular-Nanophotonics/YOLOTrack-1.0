@@ -1,6 +1,9 @@
 # YOLOv2 Framework for Digital Microscopy
 
-*M. Fränzl*, Molecular Nanophtonics Group
+*M. Fränzl\**
+
+Molecular Nanophotonics Group, Peter Debye Institute for Soft Matter Physics, Universitäat Leipzig, Linnestr. 5, 04103 Leipzig, Germany
+* [mailto](mailto:martin.fraenzl@physik.uni-leipzig.de)
 
 ## Content
 
