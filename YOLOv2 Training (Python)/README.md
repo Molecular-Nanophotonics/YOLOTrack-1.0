@@ -8,7 +8,7 @@ This repository contains Jupyter notebooks and Python modules for synthetic imag
 
 ## Requirements 
 
-- [Anaconda](https://www.anaconda.com/distribution/) for Python 3.x + TensorFlow 1.13/14/15
+- [Anaconda](https://www.anaconda.com/distribution/) for Python 3.x + TensorFlow 1.1x
 
 ## User's Guide
 
