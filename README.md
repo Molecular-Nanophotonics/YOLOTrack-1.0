@@ -22,6 +22,7 @@ This is a framework for the real-time localization and classification of objects
   <b>Fig. 1</b> YOLOv2 detection for a darkfield microscopy image of nano- and microparticles.
 </p>
 
+[M. Fränzl and F. Cichos, ..., ... (2020)][https://home.uni-leipzig.de/~physik/sites/mona/]
 
 ## Repository Contents
 
