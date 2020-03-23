@@ -6,6 +6,12 @@
 
 Example on how to use `TF.dll` and `YOLOv2` in a LabVIEW application.
 
+<p align="center">
+  <img src="../Resources/YOLOv2-LabVIEW-Screenshot.png" width=550> <br><br>
+  <b>Fig. 1</b> Screenshot of the LabVIEW application.
+</p>
+
+
 ## Requirements 
 
 - [LabVIEW (64-Bit)](https://www.ni.com/en-us/support/downloads/software-products/download.labview.html)
