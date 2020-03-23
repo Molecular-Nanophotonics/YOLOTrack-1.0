@@ -7,7 +7,7 @@
 Example on how to use `TF.dll` and `YOLOv2` in a Qt/C++ application.
 
 <p align="center">
-  <img src="../Resources/YOLOv2-Qt-Screenshot.png" width=400> <br><br>
+  <img src="../Resources/YOLOv2-Qt-Screenshot.png" width=500> <br><br>
   <b>Fig. 1</b> YOLOv2 detection for a darkfield microscopy image of nano- and microparticles.
 </p>
 
