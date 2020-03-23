@@ -21,7 +21,7 @@ This is a framework for the real-time localization and classification of objects
 
 <p align="center">
   <img src="Resources/YOLOv2-Detection-Example.png" width=380> <br>
-  <b>Fig. 1</b> YOLOv2 detection for a darkfield microscopy image of nano- and microparticles.
+  <b>Fig. 1</b> YOLOv2 detection for a synthetic darkfield image of microparticles.
 </p>
 
 
