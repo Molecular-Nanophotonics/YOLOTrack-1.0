@@ -2,7 +2,7 @@
 
 *M. Fränzl*
 
-Molecular Nanophotonics Group, Peter Debye Institute for Soft Matter Physics, Universitäat Leipzig, Linnestr. 5, 04103 Leipzig, Germany
+Molecular Nanophotonics Group, Peter Debye Institute for Soft Matter Physics, Universität Leipzig, Linnestr. 5, 04103 Leipzig, Germany
 
 ## Content
 
