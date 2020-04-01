@@ -8,7 +8,12 @@ This repository contains Jupyter notebooks and Python modules for synthetic imag
 
 ## Requirements 
 
-- [Anaconda](https://www.anaconda.com/distribution/) for Python 3.x + TensorFlow 1.x
+- [Anaconda](https://www.anaconda.com/distribution/) for Python 3.x
+
+## Setup
+- `conda install tensorflow-gpu=1.14.0`
+- `conda install keras`
+- `conda install -c conda-forge imgaug`
 
 ## User's Guide
 
