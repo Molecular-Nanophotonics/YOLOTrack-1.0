@@ -24,5 +24,5 @@ This repository contains Jupyter notebooks and Python modules for synthetic imag
 
 - [Inference.ipynb](Inference.ipynb): Notebook that shows how to load the exported `model.pb` and `model.ini` files and run a model inference. It requires the **utils** module for the output decoding.
 
-For details refer to the documentation and comments in the individual files.
+For details refer to the documentation and comments in the individual scripts and notebooks.
 
