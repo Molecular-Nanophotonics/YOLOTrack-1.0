@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../YOLOv2/mainwindow.h"
+#include "../../../../YOLOv2.1-Framework/YOLOv21 Inference (C++)/YOLOv21/mainwindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

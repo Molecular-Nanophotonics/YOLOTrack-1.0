@@ -11,11 +11,17 @@ Example on how to use `TF.dll` and `YOLOv2.dll` in a LabVIEW application.
   <b>Fig. 1</b> Screenshot of the LabVIEW application.
 </p>
 
+<p align="center">
+  <img src="../Resources/YOLOv2-LabVIEW-Screenshot.png" width=550> <br>
+  <b>Fig. 1</b> Screenshot of the LabVIEW application.
+</p>
+
+
 ## Requirements 
 
 - [LabVIEW (64-Bit)](https://www.ni.com/en-us/support/downloads/software-products/download.labview.html)
 - [CUDA Toolkit 10.0](https://developer.nvidia.com/cuda-10.0-download-archive)
-- [cdDNN 7.6.4](https://developer.nvidia.com/rdp/cudnn-archive)
-- `tensorflow.dll` from [libtensorflow-gpu-windows-x86_64-1.13.1](https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-windows-x86_64-1.13.1.zip)
+- [cdDNN 7.4.2](https://developer.nvidia.com/rdp/cudnn-archive)
+- `tensorflow.dll` from [libtensorflow-gpu-windows-x86_64-1.14.0](https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-windows-x86_64-1.14.0.zip)
 
 

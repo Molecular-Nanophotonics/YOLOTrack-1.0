@@ -6,6 +6,7 @@ import copy
 import cv2
 import matplotlib.patches as patches
 
+
 class BoundBox:
     def __init__(self, xmin, ymin, xmax, ymax, c = None, classes = None):
         self.xmin = xmin
@@ -31,20 +32,7 @@ class BoundBox:
             
         return self.score
 
-		
-class WeightReader:
-    def __init__(self, weight_file):
-        self.offset = 4
-        self.all_weights = np.fromfile(weight_file, dtype='float32')
-        
-    def read_bytes(self, size):
-        self.offset = self.offset + size
-        return self.all_weights[self.offset-size:self.offset]
-    
-    def reset(self):
-        self.offset = 4
 
-		
 def bbox_iou(box1, box2):
     intersect_w = _interval_overlap([box1.xmin, box1.xmax], [box2.xmin, box2.xmax])
     intersect_h = _interval_overlap([box1.ymin, box1.ymax], [box2.ymin, box2.ymax])  
@@ -58,7 +46,7 @@ def bbox_iou(box1, box2):
     
     return float(intersect) / union
 
-	
+
 def draw_boxes(image, ax, bboxes, color_list, lw=1):
     image_h, image_w = image.shape
     for bbox in bboxes:
@@ -69,6 +57,7 @@ def draw_boxes(image, ax, bboxes, color_list, lw=1):
         w, h = xmax - xmin, ymax - ymin
         class_idx = bbox.get_label()
         ax.add_patch(patches.Rectangle((xmin, ymin), w, h, ls='-', lw=lw, edgecolor=color_list[class_idx], facecolor='none'))        
+
         
 def decode_netout(netout, anchors, nb_class, obj_threshold=0.6, nms_threshold=0.45):
     grid_h, grid_w, nb_box = netout.shape[:3]
