@@ -1,10 +1,10 @@
-# YOLOv2 DLL
+# YOLOTrack 1.0 DLL
 
 *M. Fränzl*, Molecular Nanophtonics Group
 
 ## Discription
 
-`YOLOv2.dll` is a dynamic link library to decode the YOLOv2 output tensor. The `YOLOv2.dll` is located in [x64/Release](x64/Release) and defined in [YOLOv2.h](YOLOv2.h)
+`YOLOTrack10.dll` is a dynamic link library to decode the YOLOTrack 1.0 output tensor. The `YOLOTrack10.dll` is located in [x64/Release](x64/Release) and defined in [YOLOTrack10.h](YOLOTrack10.h)
 
 ## Requirements 
 
