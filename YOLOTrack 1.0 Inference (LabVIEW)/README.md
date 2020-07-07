@@ -1,13 +1,13 @@
-# YOLOv2 Inference (LabVIEW)
+# YOLOTrack 1.0 Inference (LabVIEW)
 
 *M. Fränzl*, Molecular Nanophtonics Group
 
 ## Discription
 
-Example on how to use `TF.dll` and `YOLOv2.dll` in a LabVIEW application.
+Example on how to use `TF.dll` and `YOLOTrack10.dll` in a LabVIEW application.
 
 <p align="center">
-  <img src="../Resources/YOLOv2-LabVIEW-Screenshot.png" width=500> <br><br>
+  <img src="../Resources/YOLOTrack10-LabVIEW-Screenshot.png" width=500> <br><br>
   <b>Fig. 1</b> Screenshot of the LabVIEW application.
 </p>
 
