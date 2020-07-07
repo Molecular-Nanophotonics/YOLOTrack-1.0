@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = YOLOv2
+TARGET = YOLOTrack-1.0
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -33,10 +33,10 @@ FORMS += \
 #LIBS += $$PWD/MyDLL/x64/Release/MyDLL.dll
 
 win32:CONFIG(release, debug|release): LIBS += "-L../../TF DLL/x64/release/" -lTF \
-                                              "-L../../YOLOv2 DLL/x64/release/" -lYOLOv2
+                                              "-L../../YOLOTrack 1.0 DLL/x64/release/" -lYOLOTrack10
 
 INCLUDEPATH += ../../TF DLL/TF.h \
-               ../../YOLOv2 DLL/YOLOv2.h
+               ../../YOLOTrack 1.0 DLL/YOLOTrack10.h
 
 DEPENDPATH += ../../TF DLL/TF.h \
-              ../../YOLOv2 DLL/YOLOv2.h
+              ../../YOLOTrack 1.0 DLL/YOLOTrack10.h

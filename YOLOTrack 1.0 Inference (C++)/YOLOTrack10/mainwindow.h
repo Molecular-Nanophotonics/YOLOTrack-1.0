@@ -4,7 +4,7 @@
 #include <QMainWindow>
 
 #include "../../TF DLL/TF.h"
-#include "../../YOLOv2 DLL/YOLOv2.h"
+#include "../../YOLOTrack 1.0 DLL/YOLOTrack10.h"
 
 
 #include <QFileDialog>

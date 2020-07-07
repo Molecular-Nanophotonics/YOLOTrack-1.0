@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.3
+** Created by: Qt User Interface Compiler version 5.13.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -183,23 +183,23 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "YOLOv2", nullptr));
-        selectImage_button->setText(QApplication::translate("MainWindow", "...", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "YOLOTrack-1.0", nullptr));
+        selectImage_button->setText(QCoreApplication::translate("MainWindow", "...", nullptr));
         tensorflowVersion_label1->setText(QString());
-        deviceName_label0->setText(QApplication::translate("MainWindow", "Device Name", nullptr));
-        tensorflowVersion_label0->setText(QApplication::translate("MainWindow", "TensorFlow Version", nullptr));
+        deviceName_label0->setText(QCoreApplication::translate("MainWindow", "Device Name", nullptr));
+        tensorflowVersion_label0->setText(QCoreApplication::translate("MainWindow", "TensorFlow Version", nullptr));
         deviceName_label1->setText(QString());
-        imagePath_label->setText(QApplication::translate("MainWindow", "Path to Image", nullptr));
-        selectModel_button->setText(QApplication::translate("MainWindow", "...", nullptr));
-        modelPath_label->setText(QApplication::translate("MainWindow", "Path to Model", nullptr));
-        objectThreshold_label->setText(QApplication::translate("MainWindow", "Object Threshold", nullptr));
-        nmsThreshold_label->setText(QApplication::translate("MainWindow", "NMS Threshold", nullptr));
-        update_button->setText(QApplication::translate("MainWindow", "Update", nullptr));
-        timings_groupBox->setTitle(QApplication::translate("MainWindow", "Timings [ms]", nullptr));
+        imagePath_label->setText(QCoreApplication::translate("MainWindow", "Path to Image", nullptr));
+        selectModel_button->setText(QCoreApplication::translate("MainWindow", "...", nullptr));
+        modelPath_label->setText(QCoreApplication::translate("MainWindow", "Path to Model", nullptr));
+        objectThreshold_label->setText(QCoreApplication::translate("MainWindow", "Object Threshold", nullptr));
+        nmsThreshold_label->setText(QCoreApplication::translate("MainWindow", "NMS Threshold", nullptr));
+        update_button->setText(QCoreApplication::translate("MainWindow", "Update", nullptr));
+        timings_groupBox->setTitle(QCoreApplication::translate("MainWindow", "Timings [ms]", nullptr));
         runTime_label->setText(QString());
         decodeTime_label->setText(QString());
-        runTime_label_2->setText(QApplication::translate("MainWindow", "Run:", nullptr));
-        runTime_label_3->setText(QApplication::translate("MainWindow", "Decode:", nullptr));
+        runTime_label_2->setText(QCoreApplication::translate("MainWindow", "Run:", nullptr));
+        runTime_label_3->setText(QCoreApplication::translate("MainWindow", "Decode:", nullptr));
     } // retranslateUi
 
 };
