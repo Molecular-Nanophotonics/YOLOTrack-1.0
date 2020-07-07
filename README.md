@@ -30,7 +30,7 @@ This is a framework for the real-time localization and classification of objects
 
 - [YOLOTrack 1.0 Training (Python)](./YOLOTrack%201.0%20Training%20(Python)):  Jupyter notebooks and Python modules for synthetic image generation, training and exporting YOLOTrack 1.0 models with Python/Keras using the TensorFlow backend
 - [TF DLL](./TF%20DLL): DLL for running TensorFlow models on GPU (`TF.dll`)
-- [YOLOTrack 1.0 DLL](./YOLOTrack%201.0%20DLL): DLL for decoding the YOLOTrack10 output tensor (`YOLOTrack10.dll`)
+- [YOLOTrack 1.0 DLL](./YOLOTrack%201.0%20DLL): DLL for decoding the YOLOTrack 1.0 output tensor (`YOLOTrack10.dll`)
 - [YOLOTrack 1.0 Inference (LabVIEW)](./YOLOTrack%201.0%20Inference%20(LabVIEW)): Example for importing and running a trained YOLOTrack 1.0 model in LabVIEW
 - [YOLOTrack 1.0 Inference (C++)](./YOLOTrack%201.0%20Inference%20(C%2B%2B)): Example for importing and running a trained model with Qt/C++
 
