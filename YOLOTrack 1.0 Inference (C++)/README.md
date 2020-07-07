@@ -1,13 +1,13 @@
-# YOLOv2 Inference (C++)
+# YOLOTrack 1.0 Inference (C++)
 
 *M. Fränzl*, Molecular Nanophtonics Group
 
 ## Discription
 
-Example on how to use `TF.dll` and `YOLOv2.dll` in a Qt/C++ application.
+Example on how to use `TF.dll` and `YOLOTrack10.dll` in a Qt/C++ application.
 
 <p align="center">
-  <img src="../Resources/YOLOv2-Qt-Screenshot.png" width=500> <br>
+  <img src="../Resources/YOLOTrack10-Qt-Screenshot.png" width=500> <br>
   <b>Fig. 1</b> Screenshot of the Qt/C++ application.
 </p>
 
