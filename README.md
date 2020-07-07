@@ -28,9 +28,9 @@ This is a framework for the real-time localization and classification of objects
 
 ## Repository Contents
 
-- [YOLOTrack 1.0 Training (Python)](./YOLOv2%20Training%20(Python)):  Jupyter notebooks and Python modules for synthetic image generation, training and exporting YOLOv2 models with Python/Keras using the TensorFlow backend
+- [YOLOTrack 1.0 Training (Python)](./YOLOTrack%201.0%20Training%20(Python)):  Jupyter notebooks and Python modules for synthetic image generation, training and exporting YOLOv2 models with Python/Keras using the TensorFlow backend
 - [TF DLL](./TF%20DLL): DLL for running TensorFlow models on GPU (`TF.dll`)
-- [YOLOTrack 1.0 DLL](./YOLOTrack%201.020DLL): DLL for decoding the YOLOTrack10 output tensor (`YOLOTrack10.dll`)
+- [YOLOTrack 1.0 DLL](./YOLOTrack%201.0%20DLL): DLL for decoding the YOLOTrack10 output tensor (`YOLOTrack10.dll`)
 - [YOLOTrack 1.0 Inference (LabVIEW)](./YOLOTrack%201.0%20Inference%20(LabVIEW)): Example for importing and running a trained YOLOTrack 1.0 model in LabVIEW
 - [YOLOTrack 1.0 Inference (C++)](./YOLOTrack%201.0%20Inference%20(C%2B%2B)): Example for importing and running a trained model with Qt/C++
 
@@ -43,7 +43,7 @@ The network is trained and evaluated in Python/Keras using the TensorFlow backen
   <b>Fig. 2</b> Design of the framework used for training and real-time inference.
 </p>
 
-The `TF.dll` is a generic library for the inference of TensorFlow models build on top of the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) (`tensorflow.dll`). It can be used with any TensorFlow model and is not specific to YOLOv2. It is a copy of [TF-Framework/TF DLL](https://github.com/Molecular-Nanophotonics/TF-Framework). The `YOLOv2.dll` adds specific functions required to decode the YOLOv2 output and does not depend on the [TensorFlow C API](https://www.tensorflow.org/install/lang_c).
+The `TF.dll` is a generic library for the inference of TensorFlow models build on top of the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) (`tensorflow.dll`). It can be used with any TensorFlow model and is not specific to YOLOTrack. It is a copy of [TF-Framework/TF DLL](https://github.com/Molecular-Nanophotonics/TF-Framework). The `YOLOTrack10.dll` adds specific functions required to decode the YOLOTrack 1.0 output and does not depend on the [TensorFlow C API](https://www.tensorflow.org/install/lang_c).
 
 ## System Requirements
 
