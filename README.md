@@ -43,7 +43,7 @@ The network is trained and evaluated in Python/Keras using the TensorFlow backen
   <b>Fig. 2</b> Design of the framework used for training and real-time inference.
 </p>
 
-The `TF.dll` is a generic library for the inference of TensorFlow models build on top of the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) (`tensorflow.dll`). It can be used with any TensorFlow model and is not specific to YOLOTrack. It is a copy of [TF-Framework/TF DLL](https://github.com/Molecular-Nanophotonics/TF-Framework). The `YOLOTrack10.dll` adds specific functions required to decode the YOLOTrack 1.0 output and does not depend on the [TensorFlow C API](https://www.tensorflow.org/install/lang_c).
+The `TF.dll` is a generic library for the inference of TensorFlow models build on top of the GPU supported [TensorFlow C API](https://www.tensorflow.org/install/lang_c) (`tensorflow.dll`). It can be used with any TensorFlow model and is not specific to YOLOTrack. It is a copy of [TF-Framework/TF DLL](https://github.com/Molecular-Nanophotonics/TF-Framework/TF%20DLL). The `YOLOTrack10.dll` adds specific functions required to decode the YOLOTrack 1.0 output and does not depend on the [TensorFlow C API](https://www.tensorflow.org/install/lang_c).
 
 ## System Requirements
 
